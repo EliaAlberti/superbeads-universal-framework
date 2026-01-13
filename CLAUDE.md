@@ -6,7 +6,8 @@
 |-----|-------|
 | **Project** | Universal SuperBeads Framework |
 | **Purpose** | Meta-framework for ANY Claude Code task |
-| **Status** | ✅ Ready for GitHub launch |
+| **Status** | ✅ LAUNCHED |
+| **Repo** | github.com/EliaAlberti/superbeads-universal-framework |
 | **Architecture** | Core Engine (standalone) + Domain Packs (accelerators) |
 
 ---
@@ -26,7 +27,7 @@ packs/              # 5 domain packs, each with 4 agents + 9 skills
 ├── design/         # Product design (Figma, AI tools)
 └── pm/             # Product management (Agile + Lean)
 
-superbeads-ios-app/ # Demo project for screen recordings
+docs/screenshots/   # 9 screenshots for README (added Jan 13)
 ```
 
 **CLI:** `superbeads init|task|sprint|board|verify|status|pack install|pack list`
@@ -58,6 +59,9 @@ superbeads-ios-app/ # Demo project for screen recordings
 | Task board | Wrap bd/bv with neutral terminology | Leverage existing tools, own the UX |
 | CLI `--yes` flag | Deferred | Human install works; CI/CD is nice-to-have |
 | bv "AI Integration?" prompt | Select "No thanks" | SuperBeads has its own agent system |
+| Screenshots vs recordings | Screenshots (9 total) | Simpler, most repos use them |
+| GitHub workflow | gh CLI (not MCP) | Simpler auth, works everywhere |
+| Typography | No em-dashes | Avoid AI-written appearance |
 
 ---
 
@@ -106,14 +110,23 @@ superbeads-ios-app/ # Demo project for screen recordings
 
 ---
 
-## Next Steps
+## Completed (Launch)
 
-- [x] Fix README installation (now uses install script) ✓
-- [x] Run installer (`~/.superbeads/bin/` in PATH) ✓
-- [x] All verification tests passed ✓
-- [ ] Create screen recordings per `SCREEN-RECORDINGS.md`
-- [ ] GitHub repo setup (LICENSE ✓, CONTRIBUTING.md ✓, .gitignore check)
-- [ ] Launch
+- [x] Fix README installation (install script)
+- [x] Run installer (`~/.superbeads/bin/` in PATH)
+- [x] All verification tests passed
+- [x] Screenshots (9) instead of recordings
+- [x] GitHub repo created and pushed
+- [x] Em-dash cleanup (240 replacements)
+
+## Bug Fixes (This Session)
+
+| Bug | Fix |
+|-----|-----|
+| `superbeads status` null values | Sprint schema: `.id` → `.sprint_id`, `.done` → `.completed` |
+| bv JSON parsing | Paths: `.quick_ref.total_open` → `.triage.quick_ref.open_count` |
+| Missing .gitignore | Created with standard ignores |
+| CLAUDE.md template detection | Filled in demo app CLAUDE.md with real content |
 
 ---
 
@@ -125,4 +138,4 @@ superbeads-ios-app/ # Demo project for screen recordings
 
 ---
 
-*Updated: January 11, 2026 - Pre-launch*
+*Updated: January 13, 2026 - LAUNCHED*
