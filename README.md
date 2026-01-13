@@ -1056,7 +1056,7 @@ Create a `CLAUDE.md` file and use `/resume`. That alone provides significant val
 | **Super** | [Superpowers](https://github.com/obra/superpowers) by Jesse (obra) | Structured development workflow |
 | **Beads** | [Beads](https://github.com/steveyegge/beads) by Steve Yegge | Git-backed task tracking |
 
-**Wiggun Flavour** references [Ralph Wiggum](https://github.com/anthropics/claude-code/tree/main/plugins/ralph-wiggum) methodology:
+**Wiggum Flavour** references [Ralph Wiggum](https://github.com/anthropics/claude-code/tree/main/plugins/ralph-wiggum) methodology:
 
 | Principle | Meaning |
 |-----------|---------|
