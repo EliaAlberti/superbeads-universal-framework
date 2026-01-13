@@ -6,7 +6,7 @@
 </p>
 
 <h1 align="center">SuperBeads Universal Framework</h1>
-<h3 align="center"><em>with Wiggun Flavour</em></h3>
+<h3 align="center"><em>with Wiggum Flavour</em></h3>
 
 <p align="center">
   <strong>A systematic methodology for Claude Code that transforms AI collaboration into structured, verifiable productivity.</strong>
