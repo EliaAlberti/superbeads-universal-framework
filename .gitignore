@@ -46,3 +46,4 @@ dist/
 *.key
 credentials.json
 secrets.json
+CLAUDE.md
