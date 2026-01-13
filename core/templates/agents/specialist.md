@@ -145,5 +145,5 @@ Recommendations:
 
 ## Related Documentation
 
-- [UNIVERSAL-AGENTS.md](../../docs/UNIVERSAL-AGENTS.md) — Agent pattern
+- [UNIVERSAL-AGENTS.md](../../docs/UNIVERSAL-AGENTS.md) - Agent pattern
 - Domain-specific pack documentation (if available)

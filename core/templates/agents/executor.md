@@ -204,6 +204,6 @@ Need: [Resolution required]
 
 ## Related Documentation
 
-- [TASK-DISCIPLINE.md](../../docs/TASK-DISCIPLINE.md) — Task structure
-- [VERIFICATION-FRAMEWORK.md](../../docs/VERIFICATION-FRAMEWORK.md) — Completion signals
-- [SESSION-PROTOCOLS.md](../../docs/SESSION-PROTOCOLS.md) — Workflow patterns
+- [TASK-DISCIPLINE.md](../../docs/TASK-DISCIPLINE.md) - Task structure
+- [VERIFICATION-FRAMEWORK.md](../../docs/VERIFICATION-FRAMEWORK.md) - Completion signals
+- [SESSION-PROTOCOLS.md](../../docs/SESSION-PROTOCOLS.md) - Workflow patterns

@@ -285,6 +285,6 @@ Proceeding with task completion.
 
 ## Related Documentation
 
-- `packs/ios/skills/` — iOS implementation skills
-- `core/docs/VERIFICATION-FRAMEWORK.md` — Verification patterns
-- `core/docs/SESSION-PROTOCOLS.md` — Workflow patterns
+- `packs/ios/skills/` - iOS implementation skills
+- `core/docs/VERIFICATION-FRAMEWORK.md` - Verification patterns
+- `core/docs/SESSION-PROTOCOLS.md` - Workflow patterns

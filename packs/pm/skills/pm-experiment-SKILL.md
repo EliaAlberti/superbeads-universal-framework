@@ -104,7 +104,7 @@ Structure the test:
 | Treatment | Order history with "Reorder" button | 50% |
 
 ### Randomization Unit
-**User-level** — Same user always sees same variant
+**User-level** - Same user always sees same variant
 
 ### Targeting
 | Criteria | Value |

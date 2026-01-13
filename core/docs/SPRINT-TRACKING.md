@@ -2,7 +2,7 @@
 
 > **File-based progress tracking for any work**
 
-Sprints provide structure for complex work. Track goals, tasks, progress, and history—all in simple files.
+Sprints provide structure for complex work. Track goals, tasks, progress, and history-all in simple files.
 
 ---
 
@@ -479,7 +479,7 @@ Even short sessions deserve a log entry.
 
 ### 4. Update Stats After Each Task
 
-Don't batch updates—track progress in real time.
+Don't batch updates-track progress in real time.
 
 ### 5. Archive, Don't Delete
 
@@ -489,13 +489,13 @@ Keep sprint history for reference.
 
 ## Summary
 
-1. **File-based** — JSON state + Markdown log
-2. **Goal-focused** — One clear goal per sprint
-3. **Task-integrated** — Tasks belong to sprints
-4. **Progress-tracked** — Automatic stats
-5. **Session-logged** — History preserved
-6. **Archivable** — Completed sprints saved
+1. **File-based** - JSON state + Markdown log
+2. **Goal-focused** - One clear goal per sprint
+3. **Task-integrated** - Tasks belong to sprints
+4. **Progress-tracked** - Automatic stats
+5. **Session-logged** - History preserved
+6. **Archivable** - Completed sprints saved
 
 ---
 
-*Sprint Tracking — Core Engine Documentation*
+*Sprint Tracking - Core Engine Documentation*

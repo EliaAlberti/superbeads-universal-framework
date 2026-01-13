@@ -218,6 +218,6 @@ You're brought in for:
 
 ## Related Documentation
 
-- `core/docs/UNIVERSAL-AGENTS.md` — Base agent patterns
-- `design-system/tokens.json` — Token reference
-- WCAG 2.1 Guidelines — https://www.w3.org/WAI/WCAG21/quickref/
+- `core/docs/UNIVERSAL-AGENTS.md` - Base agent patterns
+- `design-system/tokens.json` - Token reference
+- WCAG 2.1 Guidelines - https://www.w3.org/WAI/WCAG21/quickref/

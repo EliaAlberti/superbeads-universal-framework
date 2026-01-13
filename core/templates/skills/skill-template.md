@@ -126,8 +126,8 @@ Before marking task complete, verify:
 
 ## Related Skills
 
-- [Related Skill 1] — [When to use instead]
-- [Related Skill 2] — [When to use together]
+- [Related Skill 1] - [When to use instead]
+- [Related Skill 2] - [When to use together]
 
 ---
 

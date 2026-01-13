@@ -255,6 +255,6 @@ Questions for Supervisor:
 
 ## Related Documentation
 
-- `core/docs/TASK-DISCIPLINE.md` — Task sizing rules
-- `packs/pm/skills/` — Available PM skills
-- `core/docs/SPRINT-TRACKING.md` — Sprint tracking
+- `core/docs/TASK-DISCIPLINE.md` - Task sizing rules
+- `packs/pm/skills/` - Available PM skills
+- `core/docs/SPRINT-TRACKING.md` - Sprint tracking

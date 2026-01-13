@@ -1,4 +1,4 @@
-# CLAUDE.md — Universal SuperBeads Framework
+# CLAUDE.md - Universal SuperBeads Framework
 
 ## Context
 
@@ -63,10 +63,10 @@ superbeads-ios-app/ # Demo project for screen recordings
 
 ## Working Rules
 
-1. **Universal = universal** — Domain-specific → Pack, not Core
-2. **Core works alone** — No pack = full value
-3. **Observable verification** — "Can check" not "looks good"
-4. **Mid-project adoption** — Non-destructive, incremental, works without git
+1. **Universal = universal** - Domain-specific → Pack, not Core
+2. **Core works alone** - No pack = full value
+3. **Observable verification** - "Can check" not "looks good"
+4. **Mid-project adoption** - Non-destructive, incremental, works without git
 
 ---
 
@@ -96,7 +96,7 @@ superbeads-ios-app/ # Demo project for screen recordings
 
 ## Demo App
 
-**Location:** `superbeads-ios-app/` — WeatherApp demo for recordings
+**Location:** `superbeads-ios-app/` - WeatherApp demo for recordings
 
 | Component | Status |
 |-----------|--------|
@@ -125,4 +125,4 @@ superbeads-ios-app/ # Demo project for screen recordings
 
 ---
 
-*Updated: January 11, 2026 — Pre-launch*
+*Updated: January 11, 2026 - Pre-launch*

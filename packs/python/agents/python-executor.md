@@ -326,6 +326,6 @@ Before marking task complete:
 
 ## Related Documentation
 
-- `packs/python/skills/` — Skill library
-- `core/docs/TASK-DISCIPLINE.md` — Task rules
-- `core/docs/VERIFICATION-FRAMEWORK.md` — Verification patterns
+- `packs/python/skills/` - Skill library
+- `core/docs/TASK-DISCIPLINE.md` - Task rules
+- `core/docs/VERIFICATION-FRAMEWORK.md` - Verification patterns

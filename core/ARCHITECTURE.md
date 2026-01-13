@@ -569,10 +569,10 @@ OPTIONS:
 
 Core integrates with Claude Code through:
 
-1. **CLAUDE.md** — Project memory and instructions
-2. **`.superbeads/agents/`** — Custom agent definitions
-3. **`.superbeads/commands/`** — Custom slash commands (skills)
-4. **Settings** — Configuration in `.superbeads/settings.json`
+1. **CLAUDE.md** - Project memory and instructions
+2. **`.superbeads/agents/`** - Custom agent definitions
+3. **`.superbeads/commands/`** - Custom slash commands (skills)
+4. **Settings** - Configuration in `.superbeads/settings.json`
 
 ### With Beads Task Manager
 
@@ -590,10 +590,10 @@ superbeads sync beads
 
 Packs extend Core through:
 
-1. **Pack-specific agents** — `packs/[name]/agents/`
-2. **Pack-specific skills** — `packs/[name]/skills/`
-3. **Pack-specific verification** — `packs/[name]/templates/verify.sh`
-4. **Pack settings** — `packs/[name]/settings.schema.json`
+1. **Pack-specific agents** - `packs/[name]/agents/`
+2. **Pack-specific skills** - `packs/[name]/skills/`
+3. **Pack-specific verification** - `packs/[name]/templates/verify.sh`
+4. **Pack settings** - `packs/[name]/settings.schema.json`
 
 ---
 
@@ -632,4 +632,4 @@ Core is successful when:
 
 ---
 
-*Architecture Document — Universal SuperBeads Framework Core Engine*
+*Architecture Document - Universal SuperBeads Framework Core Engine*

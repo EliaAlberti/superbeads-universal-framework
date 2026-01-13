@@ -2,7 +2,7 @@
 
 > **Universal patterns for AI collaboration on ANY task**
 
-The Core Engine works for everything: code, research, design, writing, PM—any complex task. No domain pack required.
+The Core Engine works for everything: code, research, design, writing, PM-any complex task. No domain pack required.
 
 ---
 
@@ -88,10 +88,10 @@ Every complex task benefits from four thinking modes:
 ### Task Discipline (10-15 Minute Rule)
 
 Good tasks are:
-- **Atomic** — Single focus, no "and"
-- **Clear inputs** — What you need to start
-- **Clear outputs** — What you'll produce
-- **Verifiable** — Observable completion
+- **Atomic** - Single focus, no "and"
+- **Clear inputs** - What you need to start
+- **Clear outputs** - What you'll produce
+- **Verifiable** - Observable completion
 
 ### Verification Framework
 
@@ -170,7 +170,7 @@ superbeads pack list --available
 
 > The methodology that makes iOS development exceptional now applies to everything.
 
-Core isn't about code—it's about how humans and AI collaborate on complex work:
+Core isn't about code-it's about how humans and AI collaborate on complex work:
 - **Right-sized cognitive units** (10-15 min tasks)
 - **Specialized thinking modes** (agents)
 - **Observable completion** (verification)
@@ -186,4 +186,4 @@ MIT
 
 ---
 
-*Universal SuperBeads Framework — Core Engine*
+*Universal SuperBeads Framework - Core Engine*

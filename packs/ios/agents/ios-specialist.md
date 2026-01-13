@@ -327,6 +327,6 @@ Ready for review by ios-critic.
 
 ## Related Documentation
 
-- `packs/ios/skills/ios-create-view-SKILL.md` — Primary UI skill
-- `core/docs/VERIFICATION-FRAMEWORK.md` — Verification patterns
-- `core/docs/SESSION-PROTOCOLS.md` — Workflow patterns
+- `packs/ios/skills/ios-create-view-SKILL.md` - Primary UI skill
+- `core/docs/VERIFICATION-FRAMEWORK.md` - Verification patterns
+- `core/docs/SESSION-PROTOCOLS.md` - Workflow patterns

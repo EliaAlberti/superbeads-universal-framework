@@ -279,8 +279,8 @@ Plan the rollout:
 | V1.1 | Frequently bought | 100% | Apr 1 |
 
 ### Feature Flags
-- `quick_reorder_enabled` — Master toggle
-- `quick_reorder_suggestions` — Alternative suggestions
+- `quick_reorder_enabled` - Master toggle
+- `quick_reorder_suggestions` - Alternative suggestions
 
 ### Rollback Plan
 If critical issues discovered:

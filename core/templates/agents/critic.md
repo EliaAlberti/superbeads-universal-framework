@@ -210,5 +210,5 @@ Action Required:
 
 ## Related Documentation
 
-- [VERIFICATION-FRAMEWORK.md](../../docs/VERIFICATION-FRAMEWORK.md) — Verification details
-- [TASK-DISCIPLINE.md](../../docs/TASK-DISCIPLINE.md) — Acceptance criteria
+- [VERIFICATION-FRAMEWORK.md](../../docs/VERIFICATION-FRAMEWORK.md) - Verification details
+- [TASK-DISCIPLINE.md](../../docs/TASK-DISCIPLINE.md) - Acceptance criteria

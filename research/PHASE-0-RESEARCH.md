@@ -321,25 +321,25 @@ fi
 
 ### For Core Engine
 
-1. **Start with file-based primitives** — No database, just files
-2. **Use TypeScript** — Strong typing, good tooling
-3. **Commander.js for CLI** — Battle-tested, extensible
-4. **JSON Schema validation** — For tasks, settings, manifests
-5. **Shell scripts for verification** — Universal, composable
+1. **Start with file-based primitives** - No database, just files
+2. **Use TypeScript** - Strong typing, good tooling
+3. **Commander.js for CLI** - Battle-tested, extensible
+4. **JSON Schema validation** - For tasks, settings, manifests
+5. **Shell scripts for verification** - Universal, composable
 
 ### For Pack System
 
-1. **npm workspaces** — Simple, well-understood
-2. **Standardized manifest** — `superbeads` key in package.json
-3. **Convention over configuration** — Expected directories: `agents/`, `skills/`, `templates/`
-4. **Lazy loading** — Only load pack assets when needed
+1. **npm workspaces** - Simple, well-understood
+2. **Standardized manifest** - `superbeads` key in package.json
+3. **Convention over configuration** - Expected directories: `agents/`, `skills/`, `templates/`
+4. **Lazy loading** - Only load pack assets when needed
 
 ### For Agent System
 
-1. **Markdown frontmatter** — Metadata + content in one file
-2. **Tool restrictions by default** — Explicit allowlist
-3. **Model selection per agent** — Cost optimization (haiku for review, sonnet for implementation)
-4. **Clear responsibility boundaries** — Agents don't overlap
+1. **Markdown frontmatter** - Metadata + content in one file
+2. **Tool restrictions by default** - Explicit allowlist
+3. **Model selection per agent** - Cost optimization (haiku for review, sonnet for implementation)
+4. **Clear responsibility boundaries** - Agents don't overlap
 
 ---
 

@@ -240,7 +240,7 @@ Regular progress reports without requiring action:
 **On Track**: Yes
 **Blockers**: None
 
-*No action needed—informational only*
+*No action needed-informational only*
 ```
 
 ### Question
@@ -420,30 +420,30 @@ Configure supervisor interaction in settings:
 
 ### For AI
 
-1. **Present options, not decisions** — Let supervisor choose
-2. **Provide context** — Enough info to decide
-3. **Be concise** — Respect supervisor's time
-4. **Show trade-offs** — No option is perfect
-5. **State your lean** — But don't assume approval
+1. **Present options, not decisions** - Let supervisor choose
+2. **Provide context** - Enough info to decide
+3. **Be concise** - Respect supervisor's time
+4. **Show trade-offs** - No option is perfect
+5. **State your lean** - But don't assume approval
 
 ### For Supervisor
 
-1. **Be decisive** — Quick decisions keep momentum
-2. **Be clear** — Explicit approval or rejection
-3. **Provide rationale** — Helps AI learn preferences
-4. **Trust the process** — Let AI execute within bounds
-5. **Review checkpoints** — Don't skip approval moments
+1. **Be decisive** - Quick decisions keep momentum
+2. **Be clear** - Explicit approval or rejection
+3. **Provide rationale** - Helps AI learn preferences
+4. **Trust the process** - Let AI execute within bounds
+5. **Review checkpoints** - Don't skip approval moments
 
 ---
 
 ## Summary
 
-1. **Clear roles** — Supervisor directs, AI executes
-2. **Defined checkpoints** — Planning, architecture, milestones
-3. **Escalation rules** — When to ask vs. when to proceed
-4. **Communication patterns** — Status, question, proposal
-5. **Trust boundaries** — AI decides implementation, supervisor decides direction
+1. **Clear roles** - Supervisor directs, AI executes
+2. **Defined checkpoints** - Planning, architecture, milestones
+3. **Escalation rules** - When to ask vs. when to proceed
+4. **Communication patterns** - Status, question, proposal
+5. **Trust boundaries** - AI decides implementation, supervisor decides direction
 
 ---
 
-*Supervisor Model — Core Engine Documentation*
+*Supervisor Model - Core Engine Documentation*

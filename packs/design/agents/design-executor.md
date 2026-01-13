@@ -215,6 +215,6 @@ Document breakpoint differences:
 
 ## Related Documentation
 
-- `packs/design/skills/` — Design skill library
-- `core/docs/VERIFICATION-FRAMEWORK.md` — Verification patterns
-- `design-system/tokens.json` — Design token reference
+- `packs/design/skills/` - Design skill library
+- `core/docs/VERIFICATION-FRAMEWORK.md` - Verification patterns
+- `design-system/tokens.json` - Design token reference

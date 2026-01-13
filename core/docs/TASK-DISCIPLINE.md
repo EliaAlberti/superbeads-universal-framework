@@ -2,7 +2,7 @@
 
 > **Right-sized cognitive work for any domain**
 
-The 10-15 minute rule isn't arbitrary—it's the optimal unit of AI-human collaboration. Tasks this size are completable, verifiable, and fit in working memory.
+The 10-15 minute rule isn't arbitrary-it's the optimal unit of AI-human collaboration. Tasks this size are completable, verifiable, and fit in working memory.
 
 ---
 
@@ -225,12 +225,12 @@ Each task should result in exactly one commit:
 
 Before creating a task, verify:
 
-- [ ] **Single focus** — No "and" in the title
-- [ ] **3-5 criteria** — Specific, measurable acceptance criteria
-- [ ] **Time estimate** — 10-15 minute range
-- [ ] **Clear signal** — Observable completion verification
-- [ ] **Dependencies** — All prerequisites identified
-- [ ] **One commit** — Fits in a single commit
+- [ ] **Single focus** - No "and" in the title
+- [ ] **3-5 criteria** - Specific, measurable acceptance criteria
+- [ ] **Time estimate** - 10-15 minute range
+- [ ] **Clear signal** - Observable completion verification
+- [ ] **Dependencies** - All prerequisites identified
+- [ ] **One commit** - Fits in a single commit
 
 ---
 
@@ -238,10 +238,10 @@ Before creating a task, verify:
 
 ### Process
 
-1. **Identify the "and"s** — Where can you split?
-2. **Find natural boundaries** — UI vs logic, read vs write
-3. **Create dependency chain** — What must come first?
-4. **Verify each piece** — Does each pass the checklist?
+1. **Identify the "and"s** - Where can you split?
+2. **Find natural boundaries** - UI vs logic, read vs write
+3. **Create dependency chain** - What must come first?
+4. **Verify each piece** - Does each pass the checklist?
 
 ### Example Breakdown
 
@@ -323,14 +323,14 @@ Before creating a task, verify:
 
 ## Summary
 
-1. **10-15 minutes** — Optimal task size
-2. **No "and"** — Single focus per task
-3. **3-5 criteria** — Specific acceptance criteria
-4. **Observable signal** — Clear completion verification
-5. **One commit** — Task = commit
-6. **Dependencies** — Chain tasks correctly
-7. **Split large tasks** — If >15 min, break it down
+1. **10-15 minutes** - Optimal task size
+2. **No "and"** - Single focus per task
+3. **3-5 criteria** - Specific acceptance criteria
+4. **Observable signal** - Clear completion verification
+5. **One commit** - Task = commit
+6. **Dependencies** - Chain tasks correctly
+7. **Split large tasks** - If >15 min, break it down
 
 ---
 
-*Task Discipline Guide — Core Engine Documentation*
+*Task Discipline Guide - Core Engine Documentation*

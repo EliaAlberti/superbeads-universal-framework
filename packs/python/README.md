@@ -161,9 +161,9 @@ packs/python/
 
 ## Related Documentation
 
-- `core/docs/UNIVERSAL-AGENTS.md` — Base agent patterns
-- `core/docs/TASK-DISCIPLINE.md` — Task sizing rules
-- `core/docs/VERIFICATION-FRAMEWORK.md` — Verification patterns
+- `core/docs/UNIVERSAL-AGENTS.md` - Base agent patterns
+- `core/docs/TASK-DISCIPLINE.md` - Task sizing rules
+- `core/docs/VERIFICATION-FRAMEWORK.md` - Verification patterns
 
 ## Version
 

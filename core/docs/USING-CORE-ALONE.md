@@ -494,14 +494,14 @@ Track everything in `.superbeads/sprint/progress.md`:
 
 ## Summary
 
-1. **Core works alone** — No pack required
-2. **Apply the four roles** — Strategist, Executor, Specialist, Critic
-3. **Use task discipline** — 10-15 min, clear signals
-4. **Define verification** — Observable completion
-5. **Track progress** — Sprint state + progress log
+1. **Core works alone** - No pack required
+2. **Apply the four roles** - Strategist, Executor, Specialist, Critic
+3. **Use task discipline** - 10-15 min, clear signals
+4. **Define verification** - Observable completion
+5. **Track progress** - Sprint state + progress log
 
-The universal patterns work for ANY task. Packs accelerate—Core delivers.
+The universal patterns work for ANY task. Packs accelerate-Core delivers.
 
 ---
 
-*Using Core Alone — Core Engine Documentation*
+*Using Core Alone - Core Engine Documentation*

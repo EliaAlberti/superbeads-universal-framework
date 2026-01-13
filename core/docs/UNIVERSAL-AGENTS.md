@@ -2,7 +2,7 @@
 
 > **Specialized thinking modes for any complex task**
 
-Agents aren't code—they're structured ways of approaching work. The same four roles apply whether you're building software, conducting research, creating designs, or managing products.
+Agents aren't code-they're structured ways of approaching work. The same four roles apply whether you're building software, conducting research, creating designs, or managing products.
 
 ---
 
@@ -363,4 +363,4 @@ You review outputs...
 
 ---
 
-*Universal Agent Pattern — Core Engine Documentation*
+*Universal Agent Pattern - Core Engine Documentation*

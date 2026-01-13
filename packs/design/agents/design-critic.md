@@ -221,6 +221,6 @@ Task: task-001 - Design primary button component
 
 ## Related Documentation
 
-- `core/docs/VERIFICATION-FRAMEWORK.md` — Verification patterns
-- `design-system/tokens.json` — Token reference
-- `packs/design/skills/design-review-SKILL.md` — Review skill details
+- `core/docs/VERIFICATION-FRAMEWORK.md` - Verification patterns
+- `design-system/tokens.json` - Token reference
+- `packs/design/skills/design-review-SKILL.md` - Review skill details

@@ -1,6 +1,6 @@
 # SuperBeads Framework Guide
 
-A comprehensive guide to the Universal SuperBeads Framework — a meta-framework for Claude Code that works across any domain.
+A comprehensive guide to the Universal SuperBeads Framework - a meta-framework for Claude Code that works across any domain.
 
 ---
 
@@ -22,10 +22,10 @@ A comprehensive guide to the Universal SuperBeads Framework — a meta-framework
 
 SuperBeads is a **meta-framework** that enhances how Claude Code works on your projects. It provides:
 
-- **Structure** — Consistent patterns for planning, executing, and reviewing work
-- **Context Persistence** — Your project knowledge survives across sessions
-- **Domain Expertise** — Specialized agents and skills for different domains
-- **Quality Assurance** — Built-in verification at every step
+- **Structure** - Consistent patterns for planning, executing, and reviewing work
+- **Context Persistence** - Your project knowledge survives across sessions
+- **Domain Expertise** - Specialized agents and skills for different domains
+- **Quality Assurance** - Built-in verification at every step
 
 ### The Core Insight
 
@@ -93,21 +93,21 @@ The "10-15 minute rule" is fundamental:
 | Principle | Description |
 |-----------|-------------|
 | **Time-boxed** | Every task should take 10-15 minutes |
-| **Single focus** | No "and" in task titles — split if needed |
+| **Single focus** | No "and" in task titles - split if needed |
 | **Observable** | Clear completion signal (file exists, test passes) |
 | **Atomic** | One commit per task |
 | **Criteria-based** | 3-5 acceptance criteria per task |
 
 **Why this matters:** AI works best with focused, well-defined units of work. Vague or large tasks lead to drift and errors.
 
-### CLAUDE.md — Project Memory
+### CLAUDE.md - Project Memory
 
 Every project has a `CLAUDE.md` file that serves as:
 
-- **Context persistence** — Project knowledge survives session restarts
-- **Quick orientation** — New sessions start fast with `/resume`
-- **Decision log** — Key choices documented for future reference
-- **Navigation** — Links to important files and docs
+- **Context persistence** - Project knowledge survives session restarts
+- **Quick orientation** - New sessions start fast with `/resume`
+- **Decision log** - Key choices documented for future reference
+- **Navigation** - Links to important files and docs
 
 ### Verification Framework
 
@@ -135,14 +135,14 @@ Each pack includes a `verify.sh` template customized for its domain.
 
 ### Option 1: Light Installation (Recommended Start)
 
-The simplest approach — just add a CLAUDE.md:
+The simplest approach - just add a CLAUDE.md:
 
 ```bash
 cd your-project
 
 # Create CLAUDE.md manually or copy template
 cat > CLAUDE.md << 'EOF'
-# CLAUDE.md — Project Name
+# CLAUDE.md - Project Name
 
 ## Context
 Brief description of what this project is.
@@ -459,7 +459,7 @@ superbeads pack install pm
 
 ### Fresh Project (Starting New)
 
-The ideal scenario — full framework from day one.
+The ideal scenario - full framework from day one.
 
 ```bash
 # Create project
@@ -500,10 +500,10 @@ superbeads init
 
 | Concern | Reality |
 |---------|---------|
-| Will it break my code? | No — SuperBeads only adds files |
-| Will it conflict with existing tools? | No — it's additive, not replacing |
-| Do I need to restructure? | No — it overlays your existing structure |
-| Can I adopt gradually? | Yes — start with CLAUDE.md, add more later |
+| Will it break my code? | No - SuperBeads only adds files |
+| Will it conflict with existing tools? | No - it's additive, not replacing |
+| Do I need to restructure? | No - it overlays your existing structure |
+| Can I adopt gradually? | Yes - start with CLAUDE.md, add more later |
 
 ### Incremental Adoption Path
 
@@ -758,4 +758,4 @@ Session commands (/resume, /preserve, etc.) are Claude Code features:
 
 ---
 
-*SuperBeads Universal Framework — Making AI development systematic across any domain.*
+*SuperBeads Universal Framework - Making AI development systematic across any domain.*

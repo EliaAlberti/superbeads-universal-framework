@@ -298,5 +298,5 @@ def test_user_creation_sets_username() -> None:
 
 ## Related Documentation
 
-- `core/docs/VERIFICATION-FRAMEWORK.md` — Verification patterns
-- `core/docs/UNIVERSAL-AGENTS.md` — Base critic role
+- `core/docs/VERIFICATION-FRAMEWORK.md` - Verification patterns
+- `core/docs/UNIVERSAL-AGENTS.md` - Base critic role

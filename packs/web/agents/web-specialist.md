@@ -478,5 +478,5 @@ For specialist tasks, verify:
 
 ## Related Documentation
 
-- `packs/web/skills/` — Skill library
-- `core/docs/UNIVERSAL-AGENTS.md` — Base patterns
+- `packs/web/skills/` - Skill library
+- `core/docs/UNIVERSAL-AGENTS.md` - Base patterns

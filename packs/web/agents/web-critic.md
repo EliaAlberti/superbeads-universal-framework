@@ -280,5 +280,5 @@ const style = useMemo(() => ({ color: "red" }), []);
 
 ## Related Documentation
 
-- `core/docs/VERIFICATION-FRAMEWORK.md` — Verification patterns
-- `core/docs/UNIVERSAL-AGENTS.md` — Base critic role
+- `core/docs/VERIFICATION-FRAMEWORK.md` - Verification patterns
+- `core/docs/UNIVERSAL-AGENTS.md` - Base critic role

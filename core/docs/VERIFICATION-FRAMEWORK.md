@@ -2,7 +2,7 @@
 
 > **Observable completion signals for any task**
 
-Verification isn't "looks good"—it's observable proof that work is complete. Every task needs a signal that can be checked objectively.
+Verification isn't "looks good"-it's observable proof that work is complete. Every task needs a signal that can be checked objectively.
 
 ---
 
@@ -508,12 +508,12 @@ Write criteria that can be verified:
 
 ## Summary
 
-1. **Observable signals** — Not subjective, checkable
-2. **Script-based** — `verify.sh` automates checks
-3. **Extensible** — Packs add domain checks
-4. **Fail fast** — Quick checks first
-5. **Context on failure** — Show what's wrong
+1. **Observable signals** - Not subjective, checkable
+2. **Script-based** - `verify.sh` automates checks
+3. **Extensible** - Packs add domain checks
+4. **Fail fast** - Quick checks first
+5. **Context on failure** - Show what's wrong
 
 ---
 
-*Verification Framework — Core Engine Documentation*
+*Verification Framework - Core Engine Documentation*

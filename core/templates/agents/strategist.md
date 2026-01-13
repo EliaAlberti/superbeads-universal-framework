@@ -53,9 +53,9 @@ superbeads board --plan 2>/dev/null || bv --robot-plan 2>/dev/null
 ```
 
 **Task Board Queries (when using bd/bv):**
-- `superbeads board --triage` — Project overview: open/blocked/ready tasks
-- `superbeads board --plan` — Sprint planning: parallel tracks, critical path
-- `superbeads board --insights` — Metrics: bottlenecks, health score
+- `superbeads board --triage` - Project overview: open/blocked/ready tasks
+- `superbeads board --plan` - Sprint planning: parallel tracks, critical path
+- `superbeads board --insights` - Metrics: bottlenecks, health score
 
 ### Step 2: Analyze Requirements
 
@@ -182,6 +182,6 @@ Questions for Supervisor:
 
 ## Related Documentation
 
-- [TASK-DISCIPLINE.md](../../docs/TASK-DISCIPLINE.md) — Task sizing rules
-- [SPRINT-TRACKING.md](../../docs/SPRINT-TRACKING.md) — Sprint setup
-- [SUPERVISOR-MODEL.md](../../docs/SUPERVISOR-MODEL.md) — Approval process
+- [TASK-DISCIPLINE.md](../../docs/TASK-DISCIPLINE.md) - Task sizing rules
+- [SPRINT-TRACKING.md](../../docs/SPRINT-TRACKING.md) - Sprint setup
+- [SUPERVISOR-MODEL.md](../../docs/SUPERVISOR-MODEL.md) - Approval process

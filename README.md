@@ -101,8 +101,8 @@ superbeads pack install python  # Or: ios, web, design, pm
 ```
 
 **Installed automatically during `superbeads init`:**
-- Task tracking CLI (bd) — for task management
-- Task board viewer (bv) — for visual project management TUI
+- Task tracking CLI (bd) - for task management
+- Task board viewer (bv) - for visual project management TUI
 
 ### What Gets Created
 
@@ -120,7 +120,7 @@ your-project/
 
 ### Mid-Project Adoption
 
-SuperBeads is designed for mid-project adoption. The initialization is non-destructive—it only adds files and never modifies your existing code.
+SuperBeads is designed for mid-project adoption. The initialization is non-destructive-it only adds files and never modifies your existing code.
 
 ```bash
 cd existing-project
@@ -212,7 +212,7 @@ What comes after the current work.
 EOF
 ```
 
-Start every Claude Code session with `/resume`. This alone provides persistent context across sessions—often the highest-value improvement you can make.
+Start every Claude Code session with `/resume`. This alone provides persistent context across sessions-often the highest-value improvement you can make.
 
 ### Option 2: Full Framework
 
@@ -223,7 +223,7 @@ superbeads pack install python  # Optional: add a domain pack
 
 ### Option 3: Core Only (No Pack)
 
-The Core Engine provides full value without any domain pack. It works for any type of task—code, documentation, research, planning. See [Using Core Alone](./core/docs/USING-CORE-ALONE.md).
+The Core Engine provides full value without any domain pack. It works for any type of task-code, documentation, research, planning. See [Using Core Alone](./core/docs/USING-CORE-ALONE.md).
 
 ---
 
@@ -295,7 +295,7 @@ SuperBeads is built on four patterns:
 | **Specialist** | Some problems need deep domain expertise | Handles complex domain-specific challenges | Complex UI, performance issues, advanced patterns | Applies specialized knowledge (animations, async, accessibility) |
 | **Critic** | Self-review is unreliable; fresh eyes catch issues | Reviews output, verifies quality | Before marking any task complete | Checks against criteria, runs verification, flags issues |
 
-**Cost optimization**: Strategist, Executor, and Specialist use Sonnet. Critic uses Haiku (5x cheaper)—reviews don't need full reasoning capability.
+**Cost optimization**: Strategist, Executor, and Specialist use Sonnet. Critic uses Haiku (5x cheaper)-reviews don't need full reasoning capability.
 
 ### Task Discipline
 
@@ -385,7 +385,7 @@ The built-in task board provides visual project management:
 superbeads board
 ```
 
-> **Note:** On first launch, you may see "Enhance AI Agent Integration?" prompt. Select **"No thanks"** — SuperBeads provides its own comprehensive agent context through CLAUDE.md and the agent system. The generic beads_viewer instructions are not needed.
+> **Note:** On first launch, you may see "Enhance AI Agent Integration?" prompt. Select **"No thanks"** - SuperBeads provides its own comprehensive agent context through CLAUDE.md and the agent system. The generic beads_viewer instructions are not needed.
 
 **Keyboard shortcuts (in TUI):**
 
@@ -492,7 +492,7 @@ Claude updates CLAUDE.md:
 
 ## Domain Packs
 
-Domain packs are optional accelerators. The Core Engine works for any task—packs add domain expertise.
+Domain packs are optional accelerators. The Core Engine works for any task-packs add domain expertise.
 
 | Pack | Domain | Agents | Skills |
 |------|--------|--------|--------|
@@ -505,7 +505,7 @@ Domain packs are optional accelerators. The Core Engine works for any task—pac
 ---
 
 <details>
-<summary><strong>iOS Pack</strong> — Swift/SwiftUI Development</summary>
+<summary><strong>iOS Pack</strong> - Swift/SwiftUI Development</summary>
 
 ### WHY use this pack?
 
@@ -597,11 +597,11 @@ superbeads pack install ios
 ---
 
 <details>
-<summary><strong>Python Pack</strong> — Python Development</summary>
+<summary><strong>Python Pack</strong> - Python Development</summary>
 
 ### WHY use this pack?
 
-Python's flexibility can lead to inconsistent code—missing type hints, no tests, APIs without validation. The Python pack enforces modern practices: full typing, comprehensive tests, clean architecture.
+Python's flexibility can lead to inconsistent code-missing type hints, no tests, APIs without validation. The Python pack enforces modern practices: full typing, comprehensive tests, clean architecture.
 
 ### WHAT it provides
 
@@ -689,11 +689,11 @@ superbeads pack install python
 ---
 
 <details>
-<summary><strong>Web Pack</strong> — React/Next.js Development</summary>
+<summary><strong>Web Pack</strong> - React/Next.js Development</summary>
 
 ### WHY use this pack?
 
-Web projects easily become tangled—mixed server/client components, prop drilling, forms without validation. The Web pack enforces React best practices with proper patterns throughout.
+Web projects easily become tangled-mixed server/client components, prop drilling, forms without validation. The Web pack enforces React best practices with proper patterns throughout.
 
 ### WHAT it provides
 
@@ -781,7 +781,7 @@ superbeads pack install web
 ---
 
 <details>
-<summary><strong>Design Pack</strong> — Product Design</summary>
+<summary><strong>Design Pack</strong> - Product Design</summary>
 
 ### WHY use this pack?
 
@@ -893,7 +893,7 @@ superbeads pack install design
 ---
 
 <details>
-<summary><strong>PM Pack</strong> — Product Management</summary>
+<summary><strong>PM Pack</strong> - Product Management</summary>
 
 ### WHY use this pack?
 
@@ -1009,7 +1009,7 @@ This is a reasonable concern. Here's the reality:
 **The math:**
 - A typical feature: 15-30 tasks
 - At 12 min average: 3-6 hours implementation
-- This is the **same total time**—just measured differently
+- This is the **same total time**-just measured differently
 
 **What actually changes:**
 
@@ -1023,15 +1023,15 @@ This is a reasonable concern. Here's the reality:
 
 **Why it's often faster:**
 
-1. **Recovery cost** — 4-hour task with problems = hours debugging. 12-minute task fails = you know exactly what broke.
+1. **Recovery cost** - 4-hour task with problems = hours debugging. 12-minute task fails = you know exactly what broke.
 
-2. **No rework loops** — Verified tasks stay done. Large tasks often need revisiting.
+2. **No rework loops** - Verified tasks stay done. Large tasks often need revisiting.
 
-3. **Context efficiency** — AI performs better with focused prompts.
+3. **Context efficiency** - AI performs better with focused prompts.
 
-4. **Parallel progress** — Defined tasks enable working on independent tracks.
+4. **Parallel progress** - Defined tasks enable working on independent tracks.
 
-The structure doesn't add time—it makes time visible and productive.
+The structure doesn't add time-it makes time visible and productive.
 
 ### "Can I use this without any domain pack?"
 
@@ -1039,7 +1039,7 @@ Yes. The Core Engine provides full value alone. Packs are optional accelerators.
 
 ### "Can I adopt this mid-project?"
 
-Yes. `superbeads init` only adds files—never modifies existing code. Adopt incrementally.
+Yes. `superbeads init` only adds files-never modifies existing code. Adopt incrementally.
 
 ### "What if I just want session memory?"
 

@@ -2,7 +2,7 @@
 
 > **Consistent workflow patterns for every session**
 
-Every session—regardless of domain—follows the same protocol. This ensures continuity, trackable progress, and reliable handoffs.
+Every session-regardless of domain-follows the same protocol. This ensures continuity, trackable progress, and reliable handoffs.
 
 ---
 
@@ -482,4 +482,4 @@ Update CLAUDE.md at session end:
 
 ---
 
-*Session Protocols — Core Engine Documentation*
+*Session Protocols - Core Engine Documentation*

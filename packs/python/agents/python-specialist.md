@@ -406,5 +406,5 @@ For specialist tasks, verify:
 
 ## Related Documentation
 
-- `packs/python/skills/python-async-SKILL.md` — Async patterns
-- `core/docs/UNIVERSAL-AGENTS.md` — Base patterns
+- `packs/python/skills/python-async-SKILL.md` - Async patterns
+- `core/docs/UNIVERSAL-AGENTS.md` - Base patterns

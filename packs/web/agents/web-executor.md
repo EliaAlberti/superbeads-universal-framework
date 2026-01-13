@@ -407,6 +407,6 @@ Before marking task complete:
 
 ## Related Documentation
 
-- `packs/web/skills/` — Skill library
-- `core/docs/TASK-DISCIPLINE.md` — Task rules
-- `core/docs/VERIFICATION-FRAMEWORK.md` — Verification patterns
+- `packs/web/skills/` - Skill library
+- `core/docs/TASK-DISCIPLINE.md` - Task rules
+- `core/docs/VERIFICATION-FRAMEWORK.md` - Verification patterns

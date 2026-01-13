@@ -109,7 +109,7 @@ Prepare for conversations:
 ### Introduction (5 min)
 "Thanks for joining. I'm [name], a product manager at [company].
 I'm researching how people shop for products they buy regularly.
-There are no right or wrong answers—I'm just trying to understand your experience.
+There are no right or wrong answers-I'm just trying to understand your experience.
 
 This will take about 45 minutes. I'll record for note-taking only,
 and your responses are confidential. Any questions before we start?"
@@ -247,14 +247,14 @@ Synthesize insights:
 - Average: 40% of orders are repeat items
 - Categories: consumables, household, personal care
 
-**Insight:** Significant opportunity—almost half of orders are repeats
+**Insight:** Significant opportunity-almost half of orders are repeats
 
 #### Finding 3: Workarounds Indicate Demand
 **Evidence:**
 - 6/12 have created workarounds (screenshots, notes, bookmarks)
 - 3/12 use competitor "buy again" features
 
-**Insight:** Users are solving this problem manually—high demand signal
+**Insight:** Users are solving this problem manually-high demand signal
 
 #### Finding 4: Concept Resonates Strongly
 **Evidence:**

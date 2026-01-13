@@ -193,7 +193,7 @@ contact support. Keep it to 1-2 sentences. Provide 5 variations."
 1. "Your payment didn't go through this time. Please try again or contact our support team."
 2. "We couldn't process your payment. Double-check your details and try again."
 3. "Something went wrong with your payment. Give it another try, or we're here to help."
-4. "Payment unsuccessful—this happens sometimes. Try again or reach out to us."
+4. "Payment unsuccessful-this happens sometimes. Try again or reach out to us."
 5. "We hit a snag processing your payment. Please retry or contact support."
 
 ### Selected: Option 3

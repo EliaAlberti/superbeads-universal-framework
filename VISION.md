@@ -253,7 +253,7 @@ Core-Guided Approach:
 
 ## Domain Packs (Optional Accelerators)
 
-Packs provide **pre-configured expertise** for common domains. They are NOT required—they accelerate.
+Packs provide **pre-configured expertise** for common domains. They are NOT required-they accelerate.
 
 ### Code Generation Packs
 
@@ -366,14 +366,14 @@ Extract universal patterns from iOS framework:
 
 ### Phase 2: Code Generation Packs
 
-- [ ] **iOS Pack** — Refactor existing framework as pack
-- [ ] **Python Pack** — 4 agents, 9 skills, pytest/mypy verification
-- [ ] **Web Pack** — 4 agents, 9 skills, build/lint/test verification
+- [ ] **iOS Pack** - Refactor existing framework as pack
+- [ ] **Python Pack** - 4 agents, 9 skills, pytest/mypy verification
+- [ ] **Web Pack** - 4 agents, 9 skills, build/lint/test verification
 
 ### Phase 3: Tool Orchestration Packs
 
-- [ ] **Product Design Pack** — Figma MCP, shadcn, design workflows
-- [ ] **Product Management Pack** — Atlassian, Linear, Google Suite MCPs
+- [ ] **Product Design Pack** - Figma MCP, shadcn, design workflows
+- [ ] **Product Management Pack** - Atlassian, Linear, Google Suite MCPs
 
 ### Phase 4: Polish & Distribution
 

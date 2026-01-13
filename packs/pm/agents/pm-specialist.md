@@ -259,6 +259,6 @@ When asked to help prioritize:
 
 ## Related Documentation
 
-- `core/docs/UNIVERSAL-AGENTS.md` — Base agent patterns
-- `docs/metrics/` — Company metrics definitions
-- `docs/research/` — User research repository
+- `core/docs/UNIVERSAL-AGENTS.md` - Base agent patterns
+- `docs/metrics/` - Company metrics definitions
+- `docs/research/` - User research repository

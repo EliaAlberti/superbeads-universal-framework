@@ -219,10 +219,10 @@ Always use Given/When/Then:
 
 ```markdown
 ## Priority
-- `priority:critical` — Blocking other work
-- `priority:high` — Next sprint
-- `priority:medium` — Soon
-- `priority:low` — Nice to have
+- `priority:critical` - Blocking other work
+- `priority:high` - Next sprint
+- `priority:medium` - Soon
+- `priority:low` - Nice to have
 ```
 
 ## Best Practices
@@ -236,5 +236,5 @@ Always use Given/When/Then:
 
 ## Related Documentation
 
-- `packs/pm/skills/` — PM skill library
-- `core/docs/VERIFICATION-FRAMEWORK.md` — Verification patterns
+- `packs/pm/skills/` - PM skill library
+- `core/docs/VERIFICATION-FRAMEWORK.md` - Verification patterns

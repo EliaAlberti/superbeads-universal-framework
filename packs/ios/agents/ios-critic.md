@@ -298,6 +298,6 @@ NEEDS CHANGES: Return to ios-executor to fix critical and major issues.
 
 ## Related Documentation
 
-- `packs/ios/skills/` — iOS patterns to verify against
-- `core/docs/VERIFICATION-FRAMEWORK.md` — Verification patterns
-- `core/docs/SESSION-PROTOCOLS.md` — Workflow patterns
+- `packs/ios/skills/` - iOS patterns to verify against
+- `core/docs/VERIFICATION-FRAMEWORK.md` - Verification patterns
+- `core/docs/SESSION-PROTOCOLS.md` - Workflow patterns

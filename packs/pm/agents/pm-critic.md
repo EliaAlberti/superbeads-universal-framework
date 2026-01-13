@@ -227,5 +227,5 @@ Task: task-001 - Write login user story
 
 ## Related Documentation
 
-- `core/docs/VERIFICATION-FRAMEWORK.md` — Verification patterns
-- `packs/pm/skills/pm-user-story-SKILL.md` — Story writing skill
+- `core/docs/VERIFICATION-FRAMEWORK.md` - Verification patterns
+- `packs/pm/skills/pm-user-story-SKILL.md` - Story writing skill
