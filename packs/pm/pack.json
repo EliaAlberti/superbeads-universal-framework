@@ -1,0 +1,99 @@
+{
+  "name": "pm",
+  "version": "1.0.0",
+  "description": "Product management pack for SuperBeads framework",
+  "domain": "Product Management",
+  "requires_core": ">=1.0.0",
+
+  "agents": [
+    {
+      "name": "pm-strategist",
+      "extends": "strategist",
+      "file": "agents/pm-strategist.md",
+      "model": "sonnet"
+    },
+    {
+      "name": "pm-executor",
+      "extends": "executor",
+      "file": "agents/pm-executor.md",
+      "model": "sonnet"
+    },
+    {
+      "name": "pm-specialist",
+      "extends": "specialist",
+      "file": "agents/pm-specialist.md",
+      "model": "sonnet"
+    },
+    {
+      "name": "pm-critic",
+      "extends": "critic",
+      "file": "agents/pm-critic.md",
+      "model": "haiku"
+    }
+  ],
+
+  "skills": [
+    { "file": "skills/pm-user-story-SKILL.md", "category": "requirements" },
+    { "file": "skills/pm-prd-SKILL.md", "category": "requirements" },
+    { "file": "skills/pm-sprint-planning-SKILL.md", "category": "agile" },
+    { "file": "skills/pm-roadmap-SKILL.md", "category": "strategy" },
+    { "file": "skills/pm-experiment-SKILL.md", "category": "lean" },
+    { "file": "skills/pm-metrics-SKILL.md", "category": "measurement" },
+    { "file": "skills/pm-communication-SKILL.md", "category": "leadership" },
+    { "file": "skills/pm-discovery-SKILL.md", "category": "lean" },
+    { "file": "skills/pm-backlog-SKILL.md", "category": "agile" }
+  ],
+
+  "templates": [
+    { "file": "templates/verify.sh", "target": "scripts/verify.sh" }
+  ],
+
+  "verification": {
+    "script": "scripts/verify.sh",
+    "checks": [
+      { "name": "output_exists", "command": "check_pm_outputs" },
+      { "name": "invest_quality", "command": "check_invest_criteria" },
+      { "name": "acceptance_criteria", "command": "check_acceptance_criteria" },
+      { "name": "completeness", "command": "check_artifact_completeness" }
+    ]
+  },
+
+  "tools": {
+    "linear": {
+      "command": "linear",
+      "required": false,
+      "description": "Linear CLI for issue tracking"
+    },
+    "gh": {
+      "command": "gh",
+      "required": false,
+      "description": "GitHub CLI for issues/projects"
+    },
+    "jira": {
+      "command": "jira",
+      "required": false,
+      "description": "Jira CLI for issue tracking"
+    }
+  },
+
+  "patterns": {
+    "stories": "INVEST (Independent, Negotiable, Valuable, Estimable, Small, Testable)",
+    "acceptance": "Given/When/Then format",
+    "lean": "Build-Measure-Learn cycle",
+    "discovery": "Continuous Discovery",
+    "metrics": "OKR Framework",
+    "prioritization": "RICE (Reach, Impact, Confidence, Effort)"
+  },
+
+  "install": {
+    "pre": [
+      "No specific tools required",
+      "Issue tracker access recommended (Linear, Jira, GitHub)"
+    ],
+    "post": [
+      "Copy agents to .claude/agents/",
+      "Copy verify.sh to scripts/",
+      "Create .sprint/ directory"
+    ]
+  }
+}

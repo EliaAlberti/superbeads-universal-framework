@@ -1,0 +1,86 @@
+{
+  "name": "ios",
+  "version": "1.0.0",
+  "description": "iOS/SwiftUI development pack for SuperBeads framework",
+  "domain": "iOS Development",
+  "requires_core": ">=1.0.0",
+
+  "agents": [
+    {
+      "name": "ios-strategist",
+      "extends": "strategist",
+      "file": "agents/ios-strategist.md",
+      "model": "sonnet"
+    },
+    {
+      "name": "ios-executor",
+      "extends": "executor",
+      "file": "agents/ios-executor.md",
+      "model": "sonnet"
+    },
+    {
+      "name": "ios-specialist",
+      "extends": "specialist",
+      "file": "agents/ios-specialist.md",
+      "model": "sonnet"
+    },
+    {
+      "name": "ios-critic",
+      "extends": "critic",
+      "file": "agents/ios-critic.md",
+      "model": "haiku"
+    }
+  ],
+
+  "skills": [
+    { "file": "skills/ios-create-view-SKILL.md", "category": "ui" },
+    { "file": "skills/ios-create-viewmodel-SKILL.md", "category": "logic" },
+    { "file": "skills/ios-create-model-SKILL.md", "category": "data" },
+    { "file": "skills/ios-setup-navigation-SKILL.md", "category": "architecture" },
+    { "file": "skills/ios-networking-SKILL.md", "category": "services" },
+    { "file": "skills/ios-setup-subscription-SKILL.md", "category": "services" },
+    { "file": "skills/ios-create-widget-SKILL.md", "category": "extensions" },
+    { "file": "skills/ios-setup-architecture-SKILL.md", "category": "architecture" },
+    { "file": "skills/ios-setup-storage-SKILL.md", "category": "services" }
+  ],
+
+  "templates": [
+    { "file": "templates/verify.sh", "target": "scripts/verify.sh" },
+    { "file": "templates/DESIGN-SYSTEM.md", "target": "DESIGN-SYSTEM.md" }
+  ],
+
+  "verification": {
+    "script": "scripts/verify.sh",
+    "checks": [
+      { "name": "build", "command": "xcodebuild -scheme $SCHEME -destination 'platform=iOS Simulator,name=iPhone 15' build" },
+      { "name": "test", "command": "xcodebuild -scheme $SCHEME -destination 'platform=iOS Simulator,name=iPhone 15' test" }
+    ]
+  },
+
+  "tools": {
+    "beads-viewer": {
+      "command": "bv",
+      "required": false,
+      "description": "Task management TUI (optional but recommended)"
+    }
+  },
+
+  "patterns": {
+    "architecture": "MVVM",
+    "state_management": "@StateObject/@ObservedObject",
+    "navigation": "NavigationStack",
+    "async": "Combine/async-await"
+  },
+
+  "install": {
+    "pre": [
+      "Check Xcode installed",
+      "Verify Swift version"
+    ],
+    "post": [
+      "Copy agents to .claude/agents/",
+      "Copy verify.sh to scripts/",
+      "Create .sprint/ directory"
+    ]
+  }
+}

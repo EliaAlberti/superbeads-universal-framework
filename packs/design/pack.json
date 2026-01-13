@@ -1,0 +1,94 @@
+{
+  "name": "design",
+  "version": "1.0.0",
+  "description": "Product design pack for SuperBeads framework",
+  "domain": "Product Design",
+  "requires_core": ">=1.0.0",
+
+  "agents": [
+    {
+      "name": "design-strategist",
+      "extends": "strategist",
+      "file": "agents/design-strategist.md",
+      "model": "sonnet"
+    },
+    {
+      "name": "design-executor",
+      "extends": "executor",
+      "file": "agents/design-executor.md",
+      "model": "sonnet"
+    },
+    {
+      "name": "design-specialist",
+      "extends": "specialist",
+      "file": "agents/design-specialist.md",
+      "model": "sonnet"
+    },
+    {
+      "name": "design-critic",
+      "extends": "critic",
+      "file": "agents/design-critic.md",
+      "model": "haiku"
+    }
+  ],
+
+  "skills": [
+    { "file": "skills/design-create-component-SKILL.md", "category": "ui" },
+    { "file": "skills/design-create-screen-SKILL.md", "category": "ui" },
+    { "file": "skills/design-system-SKILL.md", "category": "foundation" },
+    { "file": "skills/design-prototype-SKILL.md", "category": "interaction" },
+    { "file": "skills/design-icons-SKILL.md", "category": "assets" },
+    { "file": "skills/design-ai-assets-SKILL.md", "category": "assets" },
+    { "file": "skills/design-handoff-SKILL.md", "category": "documentation" },
+    { "file": "skills/design-user-flow-SKILL.md", "category": "architecture" },
+    { "file": "skills/design-review-SKILL.md", "category": "quality" }
+  ],
+
+  "templates": [
+    { "file": "templates/verify.sh", "target": "scripts/verify.sh" }
+  ],
+
+  "verification": {
+    "script": "scripts/verify.sh",
+    "checks": [
+      { "name": "output_exists", "command": "check_design_outputs" },
+      { "name": "consistency", "command": "check_design_system_compliance" },
+      { "name": "completeness", "command": "check_state_coverage" },
+      { "name": "accessibility", "command": "check_accessibility_notes" }
+    ]
+  },
+
+  "tools": {
+    "figma": {
+      "command": "figma",
+      "required": false,
+      "description": "Figma CLI or MCP integration"
+    },
+    "ai-tools": {
+      "command": null,
+      "required": false,
+      "description": "AI tools (Claude, ChatGPT, Gemini, Midjourney, DALL-E)"
+    }
+  },
+
+  "patterns": {
+    "methodology": "Atomic Design",
+    "tokens": "Design Tokens",
+    "states": "Component States (default, hover, active, disabled, error, loading)",
+    "accessibility": "WCAG 2.1 AA",
+    "ai_workflow": "AI-assisted asset generation"
+  },
+
+  "install": {
+    "pre": [
+      "No specific tools required",
+      "Figma account recommended",
+      "AI tool access recommended (Claude, Midjourney, etc.)"
+    ],
+    "post": [
+      "Copy agents to .claude/agents/",
+      "Copy verify.sh to scripts/",
+      "Create .sprint/ directory"
+    ]
+  }
+}

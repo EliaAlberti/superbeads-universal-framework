@@ -1,0 +1,129 @@
+# [Project Name]
+
+## Quick Context
+
+| Key | Value |
+|-----|-------|
+| **Project** | [Project name] |
+| **Purpose** | [One-line description] |
+| **Domain** | [universal / ios / python / web / design / pm] |
+| **Pack** | [Installed pack name or "Core only"] |
+
+---
+
+## Working Rules
+
+1. Follow the 10-15 minute task rule
+2. Verify each task before marking complete
+3. Update progress after each session
+4. Get approval at supervisor checkpoints
+
+---
+
+## Project Structure
+
+```
+[project-root]/
+├── CLAUDE.md              # This file
+├── verify.sh              # Verification script
+├── .superbeads/
+│   ├── settings.json      # Project settings
+│   ├── tasks/             # Task definitions
+│   ├── sprint/            # Sprint tracking
+│   │   ├── current.json   # Current sprint state
+│   │   └── progress.md    # Progress log
+│   └── agents/            # Custom agents (optional)
+└── [project files...]
+```
+
+---
+
+## Current Sprint
+
+**Sprint**: [sprint-id]
+**Goal**: [Sprint goal]
+**Progress**: [X/Y tasks complete (Z%)]
+
+### Tasks
+
+| ID | Title | Status |
+|----|-------|--------|
+| task-001 | [Title] | ✓ |
+| task-002 | [Title] | 🔄 |
+| task-003 | [Title] | □ |
+
+---
+
+## Session Protocol
+
+### Start of Session
+
+1. Read this file
+2. Check `.superbeads/sprint/current.json`
+3. Report status to supervisor
+4. Get direction for session
+5. Begin work
+
+### During Session
+
+- Work in 10-15 minute increments
+- Verify after each task
+- Update progress immediately
+- Escalate blockers promptly
+
+### End of Session
+
+1. Summarize what was accomplished
+2. Update sprint state
+3. Log to progress.md
+4. Note blockers or concerns
+5. Prepare handoff for next session
+
+---
+
+## Current Status
+
+### Completed ✅
+- [x] [Completed task]
+
+### In Progress 🔄
+- [ ] [Current task]
+
+### Blocked ⏸
+- [ ] [Blocked task] — [Reason]
+
+### Up Next
+- [ ] [Next task]
+
+---
+
+## Blockers
+
+- [Any current blockers, or "None"]
+
+---
+
+## Notes
+
+- [Important observations]
+- [Decisions made]
+- [Context for future sessions]
+
+---
+
+## Commands Reference
+
+```bash
+# Check sprint status
+cat .superbeads/sprint/current.json | jq '.stats'
+
+# Run verification
+./verify.sh
+
+# Verify specific task
+./verify.sh --task task-001
+```
+
+---
+
+*Last Updated: [Date] Session [N]*

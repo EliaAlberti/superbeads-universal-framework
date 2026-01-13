@@ -1,0 +1,23 @@
+{
+  "sprint_id": "sprint-YYYY-MM-DD",
+  "created": "YYYY-MM-DDTHH:MM:SSZ",
+  "goal": "Sprint goal description",
+  "status": "active",
+  "tasks": [
+    {
+      "id": "task-001",
+      "title": "First task title",
+      "status": "pending",
+      "completed_at": null
+    }
+  ],
+  "stats": {
+    "completed": 0,
+    "in_progress": 0,
+    "pending": 1,
+    "blocked": 0,
+    "total": 1,
+    "progress_pct": 0
+  },
+  "sessions": []
+}

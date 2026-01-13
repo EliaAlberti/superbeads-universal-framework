@@ -1,0 +1,101 @@
+{
+  "name": "python",
+  "version": "1.0.0",
+  "description": "Python development pack for SuperBeads framework",
+  "domain": "Python Development",
+  "requires_core": ">=1.0.0",
+
+  "agents": [
+    {
+      "name": "python-strategist",
+      "extends": "strategist",
+      "file": "agents/python-strategist.md",
+      "model": "sonnet"
+    },
+    {
+      "name": "python-executor",
+      "extends": "executor",
+      "file": "agents/python-executor.md",
+      "model": "sonnet"
+    },
+    {
+      "name": "python-specialist",
+      "extends": "specialist",
+      "file": "agents/python-specialist.md",
+      "model": "sonnet"
+    },
+    {
+      "name": "python-critic",
+      "extends": "critic",
+      "file": "agents/python-critic.md",
+      "model": "haiku"
+    }
+  ],
+
+  "skills": [
+    { "file": "skills/python-create-module-SKILL.md", "category": "structure" },
+    { "file": "skills/python-create-class-SKILL.md", "category": "structure" },
+    { "file": "skills/python-create-api-SKILL.md", "category": "web" },
+    { "file": "skills/python-setup-project-SKILL.md", "category": "architecture" },
+    { "file": "skills/python-testing-SKILL.md", "category": "quality" },
+    { "file": "skills/python-data-models-SKILL.md", "category": "data" },
+    { "file": "skills/python-database-SKILL.md", "category": "services" },
+    { "file": "skills/python-cli-SKILL.md", "category": "interface" },
+    { "file": "skills/python-async-SKILL.md", "category": "patterns" }
+  ],
+
+  "templates": [
+    { "file": "templates/verify.sh", "target": "scripts/verify.sh" }
+  ],
+
+  "verification": {
+    "script": "scripts/verify.sh",
+    "checks": [
+      { "name": "lint", "command": "ruff check ." },
+      { "name": "typecheck", "command": "mypy ." },
+      { "name": "test", "command": "pytest" }
+    ]
+  },
+
+  "tools": {
+    "uv": {
+      "command": "uv",
+      "required": false,
+      "description": "Fast Python package manager (recommended)"
+    },
+    "ruff": {
+      "command": "ruff",
+      "required": true,
+      "description": "Fast Python linter"
+    },
+    "mypy": {
+      "command": "mypy",
+      "required": false,
+      "description": "Static type checker"
+    },
+    "pytest": {
+      "command": "pytest",
+      "required": true,
+      "description": "Testing framework"
+    }
+  },
+
+  "patterns": {
+    "architecture": "Clean Architecture / Layered",
+    "validation": "Pydantic",
+    "testing": "pytest",
+    "async": "asyncio"
+  },
+
+  "install": {
+    "pre": [
+      "Check Python >= 3.11 installed",
+      "Verify pip/uv available"
+    ],
+    "post": [
+      "Copy agents to .claude/agents/",
+      "Copy verify.sh to scripts/",
+      "Create .sprint/ directory"
+    ]
+  }
+}

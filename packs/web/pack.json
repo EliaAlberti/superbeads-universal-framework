@@ -1,0 +1,98 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "Web development pack for SuperBeads framework (React/Next.js)",
+  "domain": "Web Development",
+  "requires_core": ">=1.0.0",
+
+  "agents": [
+    {
+      "name": "web-strategist",
+      "extends": "strategist",
+      "file": "agents/web-strategist.md",
+      "model": "sonnet"
+    },
+    {
+      "name": "web-executor",
+      "extends": "executor",
+      "file": "agents/web-executor.md",
+      "model": "sonnet"
+    },
+    {
+      "name": "web-specialist",
+      "extends": "specialist",
+      "file": "agents/web-specialist.md",
+      "model": "sonnet"
+    },
+    {
+      "name": "web-critic",
+      "extends": "critic",
+      "file": "agents/web-critic.md",
+      "model": "haiku"
+    }
+  ],
+
+  "skills": [
+    { "file": "skills/web-create-component-SKILL.md", "category": "ui" },
+    { "file": "skills/web-create-page-SKILL.md", "category": "routing" },
+    { "file": "skills/web-create-hook-SKILL.md", "category": "logic" },
+    { "file": "skills/web-setup-project-SKILL.md", "category": "architecture" },
+    { "file": "skills/web-testing-SKILL.md", "category": "quality" },
+    { "file": "skills/web-state-management-SKILL.md", "category": "state" },
+    { "file": "skills/web-api-routes-SKILL.md", "category": "backend" },
+    { "file": "skills/web-forms-SKILL.md", "category": "ui" },
+    { "file": "skills/web-styling-SKILL.md", "category": "ui" }
+  ],
+
+  "templates": [
+    { "file": "templates/verify.sh", "target": "scripts/verify.sh" }
+  ],
+
+  "verification": {
+    "script": "scripts/verify.sh",
+    "checks": [
+      { "name": "lint", "command": "npm run lint" },
+      { "name": "typecheck", "command": "npm run typecheck" },
+      { "name": "test", "command": "npm run test" },
+      { "name": "build", "command": "npm run build" }
+    ]
+  },
+
+  "tools": {
+    "node": {
+      "command": "node",
+      "required": true,
+      "description": "Node.js runtime"
+    },
+    "npm": {
+      "command": "npm",
+      "required": true,
+      "description": "Package manager"
+    },
+    "pnpm": {
+      "command": "pnpm",
+      "required": false,
+      "description": "Fast package manager (recommended)"
+    }
+  },
+
+  "patterns": {
+    "framework": "Next.js App Router",
+    "styling": "Tailwind CSS",
+    "state": "React Query / Zustand",
+    "forms": "React Hook Form + Zod",
+    "testing": "Vitest + Testing Library"
+  },
+
+  "install": {
+    "pre": [
+      "Check Node.js >= 18 installed",
+      "Verify npm/pnpm available"
+    ],
+    "post": [
+      "Copy agents to .claude/agents/",
+      "Copy verify.sh to scripts/",
+      "Create .sprint/ directory"
+    ]
+  }
+}

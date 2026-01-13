@@ -1,0 +1,1010 @@
+#!/bin/bash
+# superbeads - Universal SuperBeads Framework CLI
+#
+# Usage:
+#   superbeads <command> [options]
+#
+# Commands:
+#   init          Initialize project with Core + Beads CLI
+#   task          Task management (wraps bd commands)
+#   sprint        Sprint tracking
+#   verify        Run verification
+#   status        Show current state
+#   board         Open task board (TUI view)
+#   pack          Pack management
+#   help          Show help
+
+set -e
+
+VERSION="1.1.0"
+
+# Resolve installation directory
+if [ -L "$0" ]; then
+    SCRIPT_PATH="$(readlink -f "$0")"
+else
+    SCRIPT_PATH="$0"
+fi
+INSTALL_DIR="$(dirname "$(dirname "$SCRIPT_PATH")")"
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+# ═══════════════════════════════════════════════════════════
+# HELPERS
+# ═══════════════════════════════════════════════════════════
+
+log() {
+    echo -e "${BLUE}==>${NC} $1"
+}
+
+success() {
+    echo -e "${GREEN}✓${NC} $1"
+}
+
+warn() {
+    echo -e "${YELLOW}⚠${NC} $1"
+}
+
+error() {
+    echo -e "${RED}✗${NC} $1" >&2
+    exit 1
+}
+
+# Check if bd (Beads CLI) is installed
+check_bd() {
+    if command -v bd &> /dev/null; then
+        return 0
+    fi
+    return 1
+}
+
+# Check if bv (task board viewer) is installed
+check_bv() {
+    if command -v bv &> /dev/null; then
+        return 0
+    fi
+    return 1
+}
+
+# Install bd (Beads CLI)
+install_bd() {
+    log "Installing Beads CLI (bd)..."
+    if command -v brew &> /dev/null; then
+        brew tap steveyegge/beads 2>/dev/null || true
+        brew install bd
+    else
+        curl -fsSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/install.sh | bash
+    fi
+
+    if check_bd; then
+        success "Beads CLI (bd) installed"
+    else
+        warn "bd installation may require adding ~/.local/bin to PATH"
+        echo '  Add to your shell profile: export PATH="$HOME/.local/bin:$PATH"'
+    fi
+}
+
+# Install bv (task board viewer)
+install_bv() {
+    log "Installing task board viewer (bv)..."
+    curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/beads_viewer/main/install.sh | bash
+
+    if check_bv; then
+        success "Task board viewer (bv) installed"
+    else
+        warn "bv installation may require adding ~/.local/bin to PATH"
+        echo '  Add to your shell profile: export PATH="$HOME/.local/bin:$PATH"'
+    fi
+}
+
+# ═══════════════════════════════════════════════════════════
+# COMMANDS
+# ═══════════════════════════════════════════════════════════
+
+cmd_help() {
+    echo ""
+    echo -e "${CYAN}Universal SuperBeads Framework${NC} v${VERSION}"
+    echo ""
+    echo "Usage: superbeads <command> [options]"
+    echo ""
+    echo "Commands:"
+    echo "  init              Initialize project with Core + task tracking"
+    echo "  task <action>     Task management (create, list, complete, show)"
+    echo "  sprint <action>   Sprint tracking (start, status, close)"
+    echo "  board             Open task board (TUI view)"
+    echo "  verify            Run verification script"
+    echo "  status            Show current state"
+    echo "  pack <action>     Pack management (add, remove, list)"
+    echo "  help              Show this help"
+    echo "  version           Show version"
+    echo ""
+    echo "Task Board Commands (within TUI):"
+    echo "  b                 Board view (Kanban columns)"
+    echo "  g                 Graph view (dependency tree)"
+    echo "  i                 Insights view (health score)"
+    echo "  h                 History view (recent changes)"
+    echo "  o                 Filter open tasks only"
+    echo "  r                 Filter ready tasks only"
+    echo "  q                 Quit"
+    echo ""
+    echo "Examples:"
+    echo "  superbeads init                    Initialize new project"
+    echo "  superbeads task create             Create new task"
+    echo "  superbeads task list               List all tasks"
+    echo "  superbeads board                   Open task board"
+    echo "  superbeads sprint start            Start new sprint"
+    echo "  superbeads verify                  Run verification"
+    echo ""
+    echo "Documentation: $INSTALL_DIR/lib/docs/"
+    echo ""
+}
+
+cmd_version() {
+    echo "superbeads version $VERSION"
+}
+
+cmd_init() {
+    local dir="${1:-.}"
+
+    log "Initializing SuperBeads project in: $dir"
+
+    # Step 1: Check and install bd (Beads CLI) for task tracking
+    echo ""
+    log "Step 1: Task tracking setup"
+    if check_bd; then
+        success "Beads CLI (bd) already installed"
+    else
+        warn "Beads CLI (bd) not found"
+        echo -n "Install task tracking CLI? (y/n) "
+        read answer
+        if [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then
+            install_bd
+        else
+            warn "Skipping bd installation - task commands will not work"
+        fi
+    fi
+
+    # Step 2: Check and install bv (task board viewer)
+    echo ""
+    log "Step 2: Task board viewer setup"
+    if check_bv; then
+        success "Task board viewer (bv) already installed"
+    else
+        warn "Task board viewer (bv) not found"
+        echo -n "Install task board viewer? (y/n) "
+        read answer
+        if [ "$answer" = "y" ] || [ "$answer" = "Y" ]; then
+            install_bv
+        else
+            warn "Skipping bv installation - 'superbeads board' will not work"
+        fi
+    fi
+
+    # Step 3: Initialize Beads in project directory
+    echo ""
+    log "Step 3: Project initialization"
+    if [ -d "$dir/.beads" ]; then
+        success "Task tracking already initialized (.beads exists)"
+    elif check_bd; then
+        (cd "$dir" && bd init)
+        success "Task tracking initialized"
+    fi
+
+    # Step 4: Create SuperBeads directory structure
+    mkdir -p "$dir/.superbeads"/{sprint,agents}
+
+    # Copy templates
+    if [ -d "$INSTALL_DIR/templates" ]; then
+        # Settings
+        if [ ! -f "$dir/.superbeads/settings.json" ]; then
+            cp "$INSTALL_DIR/templates/settings/settings.json" "$dir/.superbeads/"
+            success "Created .superbeads/settings.json"
+        fi
+
+        # Sprint templates
+        if [ ! -f "$dir/.superbeads/sprint/current.json" ]; then
+            cp "$INSTALL_DIR/templates/sprint/current.json" "$dir/.superbeads/sprint/"
+            success "Created .superbeads/sprint/current.json"
+        fi
+
+        if [ ! -f "$dir/.superbeads/sprint/progress.md" ]; then
+            cp "$INSTALL_DIR/templates/sprint/progress.md" "$dir/.superbeads/sprint/"
+            success "Created .superbeads/sprint/progress.md"
+        fi
+
+        # CLAUDE.md
+        if [ ! -f "$dir/CLAUDE.md" ]; then
+            cp "$INSTALL_DIR/templates/CLAUDE.md.template" "$dir/CLAUDE.md"
+            success "Created CLAUDE.md"
+        fi
+
+        # verify.sh
+        if [ ! -f "$dir/verify.sh" ]; then
+            cp "$INSTALL_DIR/templates/verify.sh.template" "$dir/verify.sh"
+            chmod +x "$dir/verify.sh"
+            success "Created verify.sh"
+        fi
+    else
+        warn "Templates not found at $INSTALL_DIR/templates"
+    fi
+
+    # Create expected-outputs.txt
+    if [ ! -f "$dir/.superbeads/expected-outputs.txt" ]; then
+        echo "# Expected outputs (one per line)" > "$dir/.superbeads/expected-outputs.txt"
+        echo "# Add files that should exist for verification" >> "$dir/.superbeads/expected-outputs.txt"
+        success "Created .superbeads/expected-outputs.txt"
+    fi
+
+    echo ""
+    success "Project initialized!"
+    echo ""
+    echo "Created structure:"
+    echo "  .beads/            Task tracking database"
+    echo "  .superbeads/       Sprint tracking & agents"
+    echo "  CLAUDE.md          Project memory"
+    echo "  verify.sh          Verification script"
+    echo ""
+    echo "Next steps:"
+    echo "  1. Edit CLAUDE.md with project details"
+    echo "  2. Create tasks: superbeads task create"
+    echo "  3. View task board: superbeads board"
+    echo "  4. Start sprint: superbeads sprint start"
+    echo ""
+}
+
+cmd_task() {
+    local action="${1:-list}"
+    shift || true
+
+    # If bd is available, use it for task management
+    if check_bd && [ -d ".beads" ]; then
+        case $action in
+            create)
+                cmd_task_create_bd "$@"
+                ;;
+            list)
+                cmd_task_list_bd "$@"
+                ;;
+            show)
+                cmd_task_show_bd "$@"
+                ;;
+            complete)
+                cmd_task_complete_bd "$@"
+                ;;
+            *)
+                error "Unknown task action: $action (try: create, list, show, complete)"
+                ;;
+        esac
+    else
+        # Fallback to legacy JSON-based task management
+        case $action in
+            create)
+                cmd_task_create "$@"
+                ;;
+            list)
+                cmd_task_list "$@"
+                ;;
+            show)
+                cmd_task_show "$@"
+                ;;
+            complete)
+                cmd_task_complete "$@"
+                ;;
+            *)
+                error "Unknown task action: $action (try: create, list, show, complete)"
+                ;;
+        esac
+    fi
+}
+
+# ═══════════════════════════════════════════════════════════
+# TASK COMMANDS (using bd/bv)
+# ═══════════════════════════════════════════════════════════
+
+cmd_task_create_bd() {
+    log "Creating new task..."
+
+    echo ""
+    echo -n "Task title: "
+    read title
+
+    if [ -z "$title" ]; then
+        error "Title is required"
+    fi
+
+    echo -n "Task type (feature/bug/chore) [feature]: "
+    read task_type
+    task_type="${task_type:-feature}"
+
+    echo -n "Priority (1=highest, 5=lowest) [3]: "
+    read priority
+    priority="${priority:-3}"
+
+    echo -n "Time estimate (e.g., 12min) [12min]: "
+    read estimate
+    estimate="${estimate:-12min}"
+
+    # Create task using bd
+    local result=$(bd create "$title" \
+        --type "$task_type" \
+        --priority "$priority" \
+        --context "{\"time_estimate\": \"$estimate\"}" 2>&1)
+
+    if [ $? -eq 0 ]; then
+        success "Created task"
+        echo "$result"
+    else
+        error "Failed to create task: $result"
+    fi
+}
+
+cmd_task_list_bd() {
+    echo ""
+    echo "Tasks:"
+    echo ""
+    bd list --status 2>/dev/null || bd list
+    echo ""
+    echo "Tip: Use 'superbeads board' for visual task board"
+    echo ""
+}
+
+cmd_task_show_bd() {
+    local id="$1"
+
+    if [ -z "$id" ]; then
+        error "Task ID required: superbeads task show bd-abc123"
+    fi
+
+    bd show "$id" --json 2>/dev/null || bd show "$id"
+}
+
+cmd_task_complete_bd() {
+    local id="$1"
+
+    if [ -z "$id" ]; then
+        error "Task ID required: superbeads task complete bd-abc123"
+    fi
+
+    bd update "$id" --status done
+    success "Marked complete: $id"
+}
+
+# ═══════════════════════════════════════════════════════════
+# TASK COMMANDS (legacy JSON-based fallback)
+# ═══════════════════════════════════════════════════════════
+
+cmd_task_create() {
+    log "Creating new task..."
+
+    # Find next task ID
+    local count=$(ls .superbeads/tasks/*.json 2>/dev/null | wc -l | tr -d ' ')
+    local next=$((count + 1))
+    local id=$(printf "task-%03d" $next)
+
+    # Interactive creation (simplified)
+    echo ""
+    echo -n "Task title: "
+    read title
+
+    if [ -z "$title" ]; then
+        error "Title is required"
+    fi
+
+    # Create task file
+    cat > ".superbeads/tasks/${id}.json" << EOF
+{
+  "id": "$id",
+  "title": "$title",
+  "type": "feature",
+  "domain": "universal",
+  "time_estimate": "12min",
+  "status": "pending",
+  "context": {
+    "inputs": ["TODO: specify inputs"],
+    "outputs": ["TODO: specify outputs"],
+    "acceptance_criteria": [
+      "TODO: criterion 1",
+      "TODO: criterion 2",
+      "TODO: criterion 3"
+    ],
+    "completion_signal": "TODO: specify signal"
+  },
+  "depends_on": [],
+  "priority": 3
+}
+EOF
+
+    success "Created task: $id"
+    echo ""
+    echo "Edit the task file to add details:"
+    echo "  .superbeads/tasks/${id}.json"
+    echo ""
+}
+
+cmd_task_list() {
+    echo ""
+    echo "Tasks:"
+    echo ""
+
+    if [ ! -d ".superbeads/tasks" ] || [ -z "$(ls .superbeads/tasks/*.json 2>/dev/null)" ]; then
+        warn "No tasks found"
+        echo "Create a task: superbeads task create"
+        return
+    fi
+
+    for task_file in .superbeads/tasks/*.json; do
+        if command -v jq &> /dev/null; then
+            local id=$(jq -r '.id' "$task_file")
+            local title=$(jq -r '.title' "$task_file")
+            local status=$(jq -r '.status' "$task_file")
+            local estimate=$(jq -r '.time_estimate' "$task_file")
+
+            local symbol="□"
+            case $status in
+                completed) symbol="✓" ;;
+                in_progress) symbol="🔄" ;;
+                blocked) symbol="⏸" ;;
+            esac
+
+            printf "  %s %s: %s (%s)\n" "$symbol" "$id" "$title" "$estimate"
+        else
+            echo "  $(basename "$task_file" .json)"
+        fi
+    done
+    echo ""
+}
+
+cmd_task_show() {
+    local id="$1"
+
+    if [ -z "$id" ]; then
+        error "Task ID required: superbeads task show task-001"
+    fi
+
+    local task_file=".superbeads/tasks/${id}.json"
+
+    if [ ! -f "$task_file" ]; then
+        error "Task not found: $id"
+    fi
+
+    if command -v jq &> /dev/null; then
+        jq '.' "$task_file"
+    else
+        cat "$task_file"
+    fi
+}
+
+cmd_task_complete() {
+    local id="$1"
+
+    if [ -z "$id" ]; then
+        error "Task ID required: superbeads task complete task-001"
+    fi
+
+    local task_file=".superbeads/tasks/${id}.json"
+
+    if [ ! -f "$task_file" ]; then
+        error "Task not found: $id"
+    fi
+
+    if command -v jq &> /dev/null; then
+        local temp=$(mktemp)
+        jq '.status = "completed" | .completed_at = now | .completed_at |= todate' "$task_file" > "$temp"
+        mv "$temp" "$task_file"
+        success "Marked complete: $id"
+    else
+        warn "jq not installed, cannot update task status"
+        echo "Manually update status in: $task_file"
+    fi
+}
+
+cmd_sprint() {
+    local action="${1:-status}"
+    shift || true
+
+    case $action in
+        start)
+            cmd_sprint_start "$@"
+            ;;
+        status)
+            cmd_sprint_status "$@"
+            ;;
+        close)
+            cmd_sprint_close "$@"
+            ;;
+        *)
+            error "Unknown sprint action: $action (try: start, status, close)"
+            ;;
+    esac
+}
+
+cmd_sprint_start() {
+    log "Starting new sprint..."
+
+    echo ""
+    echo -n "Sprint goal: "
+    read goal
+
+    if [ -z "$goal" ]; then
+        error "Goal is required"
+    fi
+
+    local sprint_id="sprint-$(date +%Y-%m-%d)"
+    local created=$(date -Iseconds 2>/dev/null || date +%Y-%m-%dT%H:%M:%S)
+
+    # Create sprint state
+    cat > ".superbeads/sprint/current.json" << EOF
+{
+  "sprint_id": "$sprint_id",
+  "created": "$created",
+  "goal": "$goal",
+  "status": "active",
+  "tasks": [],
+  "stats": {
+    "completed": 0,
+    "in_progress": 0,
+    "pending": 0,
+    "blocked": 0,
+    "total": 0,
+    "progress_pct": 0
+  },
+  "sessions": []
+}
+EOF
+
+    # Reset progress log
+    cat > ".superbeads/sprint/progress.md" << EOF
+# Sprint Progress Log
+
+**Sprint ID**: $sprint_id
+**Goal**: $goal
+**Started**: $(date +%Y-%m-%d)
+
+---
+
+## Progress Summary
+
+| Metric | Value |
+|--------|-------|
+| Total Tasks | 0 |
+| Completed | 0 |
+| Progress | 0% |
+
+---
+
+## Session Log
+
+EOF
+
+    success "Sprint started: $sprint_id"
+    echo "Goal: $goal"
+    echo ""
+}
+
+cmd_sprint_status() {
+    if [ ! -f ".superbeads/sprint/current.json" ]; then
+        warn "No active sprint"
+        echo "Start a sprint: superbeads sprint start"
+        return
+    fi
+
+    echo ""
+    echo "Sprint Status:"
+    echo ""
+
+    if command -v jq &> /dev/null; then
+        local sprint_id=$(jq -r '.sprint_id' .superbeads/sprint/current.json)
+        local goal=$(jq -r '.goal' .superbeads/sprint/current.json)
+        local completed=$(jq -r '.stats.completed' .superbeads/sprint/current.json)
+        local total=$(jq -r '.stats.total' .superbeads/sprint/current.json)
+        local pct=$(jq -r '.stats.progress_pct' .superbeads/sprint/current.json)
+
+        echo "  Sprint: $sprint_id"
+        echo "  Goal: $goal"
+        echo "  Progress: $completed/$total ($pct%)"
+    else
+        cat .superbeads/sprint/current.json
+    fi
+    echo ""
+}
+
+cmd_sprint_close() {
+    warn "Sprint close not yet implemented"
+    echo "Manually archive .superbeads/sprint/current.json"
+}
+
+cmd_verify() {
+    if [ -f "./verify.sh" ]; then
+        ./verify.sh "$@"
+    else
+        error "verify.sh not found. Run 'superbeads init' first."
+    fi
+}
+
+cmd_board() {
+    # Open task board (TUI view)
+    if ! check_bv; then
+        error "Task board viewer (bv) not installed. Run 'superbeads init' to install."
+    fi
+
+    if [ ! -d ".beads" ]; then
+        error "Task tracking not initialized. Run 'superbeads init' first."
+    fi
+
+    # Check for optional arguments
+    case "${1:-}" in
+        --triage)
+            # Machine-readable project overview (for agents)
+            bv --robot-triage
+            ;;
+        --next)
+            # Machine-readable next task recommendation
+            bv --robot-next
+            ;;
+        --plan)
+            # Machine-readable sprint planning data
+            bv --robot-plan
+            ;;
+        --insights)
+            # Machine-readable metrics and bottlenecks
+            bv --robot-insights
+            ;;
+        --alerts)
+            # Machine-readable problems and warnings
+            bv --robot-alerts
+            ;;
+        *)
+            # Default: open TUI
+            echo ""
+            echo "Opening task board..."
+            echo ""
+            echo "Keyboard shortcuts:"
+            echo "  b = Board view    g = Graph view    i = Insights"
+            echo "  h = History       o = Open only     r = Ready only"
+            echo "  / = Search        q = Quit"
+            echo ""
+            bv
+            ;;
+    esac
+}
+
+cmd_status() {
+    echo ""
+    echo -e "${CYAN}SuperBeads Status${NC}"
+    echo ""
+
+    # Check initialization
+    if [ -d ".superbeads" ]; then
+        success "Project initialized"
+    else
+        warn "Project not initialized (run: superbeads init)"
+        return
+    fi
+
+    # Check task tracking (bd/bv)
+    if [ -d ".beads" ]; then
+        success "Task tracking active (.beads)"
+        if check_bd && check_bv; then
+            # Get task counts using robot protocol
+            if command -v jq &> /dev/null; then
+                local triage=$(bv --robot-triage 2>/dev/null)
+                if [ -n "$triage" ]; then
+                    local open=$(echo "$triage" | jq -r '.triage.quick_ref.open_count // 0')
+                    local ready=$(echo "$triage" | jq -r '.triage.quick_ref.actionable_count // 0')
+                    local blocked=$(echo "$triage" | jq -r '.triage.quick_ref.blocked_count // 0')
+                    local in_progress=$(echo "$triage" | jq -r '.triage.quick_ref.in_progress_count // 0')
+                    echo "  Tasks: $open open ($ready ready, $blocked blocked, $in_progress in progress)"
+                fi
+            else
+                bd list 2>/dev/null | head -5
+            fi
+        fi
+    else
+        warn "Task tracking not initialized (.beads missing)"
+    fi
+
+    # Show sprint status
+    if [ -f ".superbeads/sprint/current.json" ]; then
+        cmd_sprint_status
+    fi
+
+    # Show packs
+    if command -v jq &> /dev/null && [ -f ".superbeads/settings.json" ]; then
+        local packs=$(jq -r '.packs.installed | join(", ")' .superbeads/settings.json 2>/dev/null)
+        if [ -n "$packs" ] && [ "$packs" != "null" ]; then
+            echo "  Packs: $packs"
+        else
+            echo "  Packs: (none - Core only)"
+        fi
+    fi
+
+    # CLI status
+    echo ""
+    echo "CLI Tools:"
+    if check_bd; then
+        echo "  bd (task CLI): $(bd --version 2>/dev/null || echo 'installed')"
+    else
+        echo "  bd (task CLI): not installed"
+    fi
+    if check_bv; then
+        echo "  bv (task board): $(bv --version 2>/dev/null || echo 'installed')"
+    else
+        echo "  bv (task board): not installed"
+    fi
+
+    echo ""
+    echo "Quick actions:"
+    echo "  superbeads board              Open task board"
+    echo "  superbeads task list          List all tasks"
+    echo "  superbeads board --triage     Get project overview (JSON)"
+    echo ""
+}
+
+cmd_pack() {
+    local action="${1:-list}"
+    shift || true
+
+    case $action in
+        install|add)
+            cmd_pack_install "$@"
+            ;;
+        remove)
+            cmd_pack_remove "$@"
+            ;;
+        list)
+            cmd_pack_list
+            ;;
+        info)
+            cmd_pack_info "$@"
+            ;;
+        *)
+            error "Unknown pack action: $action (try: install, remove, list, info)"
+            ;;
+    esac
+}
+
+cmd_pack_install() {
+    local pack_name="$1"
+
+    if [ -z "$pack_name" ]; then
+        error "Pack name required: superbeads pack install ios"
+    fi
+
+    # Find pack directory (look in INSTALL_DIR/packs or ../packs relative to scripts)
+    local pack_dir=""
+    if [ -d "$INSTALL_DIR/../packs/$pack_name" ]; then
+        pack_dir="$INSTALL_DIR/../packs/$pack_name"
+    elif [ -d "$INSTALL_DIR/packs/$pack_name" ]; then
+        pack_dir="$INSTALL_DIR/packs/$pack_name"
+    else
+        # Try to find packs directory relative to current installation
+        local base_dir=$(dirname "$INSTALL_DIR")
+        if [ -d "$base_dir/packs/$pack_name" ]; then
+            pack_dir="$base_dir/packs/$pack_name"
+        fi
+    fi
+
+    if [ -z "$pack_dir" ] || [ ! -d "$pack_dir" ]; then
+        error "Pack not found: $pack_name"
+    fi
+
+    log "Installing pack: $pack_name from $pack_dir"
+
+    # Check pack.json exists
+    if [ ! -f "$pack_dir/pack.json" ]; then
+        error "Invalid pack: missing pack.json"
+    fi
+
+    # Check project is initialized
+    if [ ! -d ".superbeads" ]; then
+        error "Project not initialized. Run 'superbeads init' first."
+    fi
+
+    # Create destination directories
+    mkdir -p ".superbeads/agents"
+    mkdir -p ".superbeads/skills/$pack_name"
+    mkdir -p "scripts"
+
+    # Copy agents
+    if [ -d "$pack_dir/agents" ]; then
+        cp "$pack_dir/agents/"*.md ".superbeads/agents/" 2>/dev/null || true
+        success "Installed agents"
+    fi
+
+    # Copy skills
+    if [ -d "$pack_dir/skills" ]; then
+        cp "$pack_dir/skills/"*.md ".superbeads/skills/$pack_name/" 2>/dev/null || true
+        success "Installed skills to .superbeads/skills/$pack_name/"
+    fi
+
+    # Copy templates (verify.sh, etc.)
+    if [ -d "$pack_dir/templates" ]; then
+        if [ -f "$pack_dir/templates/verify.sh" ]; then
+            cp "$pack_dir/templates/verify.sh" "scripts/verify.sh"
+            chmod +x "scripts/verify.sh"
+            success "Installed scripts/verify.sh"
+        fi
+    fi
+
+    # Update settings.json with installed pack
+    if command -v jq &> /dev/null && [ -f ".superbeads/settings.json" ]; then
+        local temp=$(mktemp)
+        jq --arg pack "$pack_name" '.packs.installed += [$pack] | .packs.installed |= unique' \
+            .superbeads/settings.json > "$temp"
+        mv "$temp" .superbeads/settings.json
+    fi
+
+    echo ""
+    success "Pack '$pack_name' installed!"
+    echo ""
+    echo "Installed components:"
+
+    # Show installed agents
+    if [ -d "$pack_dir/agents" ]; then
+        echo "  Agents:"
+        for agent in "$pack_dir/agents/"*.md; do
+            echo "    - $(basename "$agent" .md)"
+        done
+    fi
+
+    # Show installed skills
+    if [ -d "$pack_dir/skills" ]; then
+        echo "  Skills:"
+        for skill in "$pack_dir/skills/"*.md; do
+            echo "    - $(basename "$skill" .md)"
+        done
+    fi
+
+    echo ""
+    echo "Next steps:"
+    if [ "$pack_name" = "ios" ]; then
+        echo "  1. Edit scripts/verify.sh with your SCHEME"
+        echo "  2. Use ios-strategist for planning"
+        echo "  3. Use ios-executor for implementation"
+    fi
+    echo ""
+}
+
+cmd_pack_remove() {
+    local pack_name="$1"
+
+    if [ -z "$pack_name" ]; then
+        error "Pack name required: superbeads pack remove ios"
+    fi
+
+    log "Removing pack: $pack_name"
+
+    # Remove skills directory
+    if [ -d ".superbeads/skills/$pack_name" ]; then
+        rm -rf ".superbeads/skills/$pack_name"
+        success "Removed skills"
+    fi
+
+    # Remove agents (identify by prefix)
+    for agent in .superbeads/agents/${pack_name}-*.md; do
+        if [ -f "$agent" ]; then
+            rm "$agent"
+        fi
+    done
+    success "Removed agents"
+
+    # Update settings.json
+    if command -v jq &> /dev/null && [ -f ".superbeads/settings.json" ]; then
+        local temp=$(mktemp)
+        jq --arg pack "$pack_name" '.packs.installed -= [$pack]' \
+            .superbeads/settings.json > "$temp"
+        mv "$temp" .superbeads/settings.json
+    fi
+
+    success "Pack '$pack_name' removed"
+}
+
+cmd_pack_list() {
+    echo ""
+    echo "Installed packs:"
+    if command -v jq &> /dev/null && [ -f ".superbeads/settings.json" ]; then
+        local packs=$(jq -r '.packs.installed[]' .superbeads/settings.json 2>/dev/null)
+        if [ -n "$packs" ]; then
+            echo "$packs" | while read pack; do
+                echo "  - $pack"
+            done
+        else
+            echo "  (none - Core only)"
+        fi
+    else
+        echo "  (none - Core only)"
+    fi
+    echo ""
+    echo "Available packs:"
+    echo "  ios       - iOS development (Swift/SwiftUI)"
+    echo "  python    - Python development (planned)"
+    echo "  web       - Web development (planned)"
+    echo "  design    - Product design (planned)"
+    echo "  pm        - Product management (planned)"
+    echo ""
+}
+
+cmd_pack_info() {
+    local pack_name="$1"
+
+    if [ -z "$pack_name" ]; then
+        error "Pack name required: superbeads pack info ios"
+    fi
+
+    # Find pack directory
+    local pack_dir=""
+    local base_dir=$(dirname "$INSTALL_DIR")
+    for search_dir in "$INSTALL_DIR/../packs" "$INSTALL_DIR/packs" "$base_dir/packs"; do
+        if [ -d "$search_dir/$pack_name" ]; then
+            pack_dir="$search_dir/$pack_name"
+            break
+        fi
+    done
+
+    if [ -z "$pack_dir" ] || [ ! -d "$pack_dir" ]; then
+        error "Pack not found: $pack_name"
+    fi
+
+    if [ ! -f "$pack_dir/pack.json" ]; then
+        error "Invalid pack: missing pack.json"
+    fi
+
+    echo ""
+    if command -v jq &> /dev/null; then
+        echo "Pack: $pack_name"
+        echo ""
+        jq '.' "$pack_dir/pack.json"
+    else
+        cat "$pack_dir/pack.json"
+    fi
+    echo ""
+}
+
+# ═══════════════════════════════════════════════════════════
+# MAIN
+# ═══════════════════════════════════════════════════════════
+
+main() {
+    local command="${1:-help}"
+    shift || true
+
+    case $command in
+        init)
+            cmd_init "$@"
+            ;;
+        task)
+            cmd_task "$@"
+            ;;
+        sprint)
+            cmd_sprint "$@"
+            ;;
+        board)
+            cmd_board "$@"
+            ;;
+        verify)
+            cmd_verify "$@"
+            ;;
+        status)
+            cmd_status "$@"
+            ;;
+        pack)
+            cmd_pack "$@"
+            ;;
+        help|--help|-h)
+            cmd_help
+            ;;
+        version|--version|-v)
+            cmd_version
+            ;;
+        *)
+            error "Unknown command: $command (try: superbeads help)"
+            ;;
+    esac
+}
+
+main "$@"

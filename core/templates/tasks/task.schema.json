@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://superbeads.dev/schemas/task.json",
+  "title": "SuperBeads Task",
+  "description": "Schema for Universal SuperBeads Framework task definitions",
+  "type": "object",
+  "required": ["id", "title", "type", "time_estimate", "context"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^task-[0-9]{3}$",
+      "description": "Unique task identifier (task-001, task-002, etc.)"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 100,
+      "description": "Clear, actionable task title. Should not contain 'and'."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["feature", "fix", "research", "analysis", "creation", "review"],
+      "description": "Type of task"
+    },
+    "domain": {
+      "type": "string",
+      "default": "universal",
+      "description": "Domain this task belongs to (universal, ios, python, web, etc.)"
+    },
+    "time_estimate": {
+      "type": "string",
+      "pattern": "^[0-9]+(min|h)$",
+      "description": "Estimated time (e.g., '12min', '1h'). Should be 10-15min."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "in_progress", "completed", "blocked"],
+      "default": "pending",
+      "description": "Current task status"
+    },
+    "context": {
+      "type": "object",
+      "required": ["inputs", "outputs", "acceptance_criteria", "completion_signal"],
+      "properties": {
+        "inputs": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1,
+          "description": "What information/files/data is needed to start"
+        },
+        "outputs": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1,
+          "description": "What will be produced"
+        },
+        "acceptance_criteria": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 3,
+          "maxItems": 5,
+          "description": "Specific, measurable criteria for completion"
+        },
+        "completion_signal": {
+          "type": "string",
+          "description": "Observable verification method"
+        },
+        "files_to_read": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Specific files to read before starting"
+        },
+        "files_to_create": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Files that will be created"
+        },
+        "files_to_modify": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Files that will be modified"
+        }
+      }
+    },
+    "depends_on": {
+      "type": "array",
+      "items": {"type": "string"},
+      "default": [],
+      "description": "Task IDs that must complete before this task"
+    },
+    "skill": {
+      "type": "string",
+      "description": "Skill to use for this task (if applicable)"
+    },
+    "agent": {
+      "type": "string",
+      "description": "Preferred agent for this task"
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "default": 3,
+      "description": "Priority level (1=highest, 5=lowest)"
+    },
+    "tags": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Optional tags for categorization"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes or context"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when task was completed"
+    },
+    "commit_hash": {
+      "type": "string",
+      "description": "Git commit hash for completed task"
+    }
+  }
+}

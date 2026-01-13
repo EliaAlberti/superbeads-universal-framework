@@ -1,0 +1,45 @@
+{
+  "$schema": "https://superbeads.dev/schemas/settings.json",
+  "project": {
+    "name": "my-project",
+    "domain": "universal",
+    "description": "Project description"
+  },
+  "packs": {
+    "installed": [],
+    "settings": {}
+  },
+  "verification": {
+    "script": "./verify.sh",
+    "quick_mode": false,
+    "auto_verify": true
+  },
+  "agents": {
+    "default_model": "sonnet",
+    "cost_optimize": true,
+    "custom_agents_dir": ".superbeads/agents"
+  },
+  "tasks": {
+    "default_estimate": "12min",
+    "min_criteria": 3,
+    "max_criteria": 5
+  },
+  "session": {
+    "auto_save_progress": true,
+    "require_supervisor_approval": true,
+    "checkpoints": {
+      "planning": true,
+      "architecture": true,
+      "milestone": true,
+      "completion": true
+    }
+  },
+  "git": {
+    "auto_commit": false,
+    "commit_format": "✓ {task_id}: {title}"
+  },
+  "beads": {
+    "enabled": false,
+    "sync": true
+  }
+}

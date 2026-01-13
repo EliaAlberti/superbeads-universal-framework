@@ -1,0 +1,34 @@
+{
+  "id": "task-001",
+  "title": "Clear, actionable title without 'and'",
+  "type": "feature",
+  "domain": "universal",
+  "time_estimate": "12min",
+  "status": "pending",
+  "context": {
+    "inputs": [
+      "What information or data is needed to start",
+      "Files to read for context"
+    ],
+    "outputs": [
+      "What will be produced (file, document, etc.)"
+    ],
+    "acceptance_criteria": [
+      "Specific, measurable criterion 1",
+      "Specific, measurable criterion 2",
+      "Specific, measurable criterion 3"
+    ],
+    "completion_signal": "Observable verification (e.g., 'build passes', 'file exists', 'tests pass')",
+    "files_to_read": [
+      "path/to/context-file.md"
+    ],
+    "files_to_create": [
+      "path/to/new-file.md"
+    ]
+  },
+  "depends_on": [],
+  "skill": null,
+  "priority": 3,
+  "tags": [],
+  "notes": ""
+}

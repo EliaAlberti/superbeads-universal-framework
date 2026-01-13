@@ -1,0 +1,238 @@
+#!/bin/bash
+# verify.sh - Universal SuperBeads Verification Script
+#
+# Usage:
+#   ./verify.sh              Run all verifications
+#   ./verify.sh --quick      Skip slow checks
+#   ./verify.sh --verbose    Show detailed output
+#   ./verify.sh --task ID    Verify specific task
+
+set -e
+
+# ═══════════════════════════════════════════════════════════
+# CONFIGURATION
+# ═══════════════════════════════════════════════════════════
+
+QUICK_MODE=false
+VERBOSE=false
+TASK_ID=""
+
+# Colors (if terminal supports)
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --quick|-q) QUICK_MODE=true; shift ;;
+        --verbose|-v) VERBOSE=true; shift ;;
+        --task|-t) TASK_ID="$2"; shift 2 ;;
+        --help|-h)
+            echo "Usage: ./verify.sh [OPTIONS]"
+            echo ""
+            echo "Options:"
+            echo "  --quick, -q      Skip slow checks"
+            echo "  --verbose, -v    Show detailed output"
+            echo "  --task, -t ID    Verify specific task"
+            echo "  --help, -h       Show this help"
+            exit 0
+            ;;
+        *) echo "Unknown option: $1"; exit 1 ;;
+    esac
+done
+
+log() {
+    if [ "$VERBOSE" = true ]; then
+        echo -e "$1"
+    fi
+}
+
+success() {
+    echo -e "   ${GREEN}✓${NC} $1"
+}
+
+fail() {
+    echo -e "   ${RED}✗${NC} $1"
+}
+
+warn() {
+    echo -e "   ${YELLOW}⚠${NC} $1"
+}
+
+# ═══════════════════════════════════════════════════════════
+# CORE CHECKS
+# ═══════════════════════════════════════════════════════════
+
+check_outputs_exist() {
+    echo "📁 Checking outputs..."
+
+    local missing=0
+
+    if [ -f ".superbeads/expected-outputs.txt" ]; then
+        while IFS= read -r output; do
+            # Skip empty lines and comments
+            [[ -z "$output" || "$output" =~ ^# ]] && continue
+
+            if [ ! -e "$output" ]; then
+                fail "Missing: $output"
+                missing=$((missing + 1))
+            else
+                log "   Found: $output"
+            fi
+        done < ".superbeads/expected-outputs.txt"
+
+        if [ $missing -gt 0 ]; then
+            fail "$missing outputs missing"
+            return 1
+        fi
+    fi
+
+    success "All outputs exist"
+}
+
+check_acceptance_criteria() {
+    echo "📋 Checking acceptance criteria..."
+
+    if [ -n "$TASK_ID" ]; then
+        local task_file=".superbeads/tasks/${TASK_ID}.json"
+        if [ -f "$task_file" ]; then
+            echo "   Task: $TASK_ID"
+            echo "   Criteria:"
+
+            # Extract and display criteria (requires jq)
+            if command -v jq &> /dev/null; then
+                jq -r '.context.acceptance_criteria[]' "$task_file" 2>/dev/null | while read -r criterion; do
+                    echo "   □ $criterion"
+                done
+            else
+                warn "jq not installed, cannot parse criteria"
+            fi
+
+            echo ""
+            warn "Manual verification required"
+        else
+            warn "Task file not found: $task_file"
+        fi
+    else
+        warn "No task specified (use --task ID)"
+    fi
+}
+
+check_no_todos() {
+    echo "📝 Checking for TODO/FIXME..."
+
+    # Define file patterns to check (customize per project)
+    local patterns="*.md *.txt *.json"
+
+    local count=0
+    for pattern in $patterns; do
+        local found=$(find . -name "$pattern" -type f -exec grep -l "TODO\|FIXME" {} \; 2>/dev/null | wc -l | tr -d ' ')
+        count=$((count + found))
+    done
+
+    if [ "$count" -gt 0 ]; then
+        warn "Found TODO/FIXME in $count files"
+        if [ "$VERBOSE" = true ]; then
+            for pattern in $patterns; do
+                find . -name "$pattern" -type f -exec grep -l "TODO\|FIXME" {} \; 2>/dev/null | head -5
+            done
+        fi
+    else
+        success "No TODO/FIXME found"
+    fi
+}
+
+check_git_status() {
+    echo "🔄 Checking git status..."
+
+    if [ ! -d ".git" ]; then
+        warn "Not a git repository"
+        return 0
+    fi
+
+    local uncommitted=$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')
+
+    if [ "$uncommitted" -gt 0 ]; then
+        warn "$uncommitted uncommitted changes"
+        if [ "$VERBOSE" = true ]; then
+            git status --short
+        fi
+    else
+        success "Working directory clean"
+    fi
+}
+
+# ═══════════════════════════════════════════════════════════
+# PACK EXTENSIONS
+# ═══════════════════════════════════════════════════════════
+
+load_pack_verifications() {
+    for pack_verify in .superbeads/packs/*/verify.sh; do
+        if [ -f "$pack_verify" ]; then
+            local pack_name=$(dirname "$pack_verify" | xargs basename)
+            echo ""
+            echo "📦 Running $pack_name pack verification..."
+            source "$pack_verify"
+        fi
+    done
+}
+
+# ═══════════════════════════════════════════════════════════
+# PROJECT-SPECIFIC CHECKS
+# ═══════════════════════════════════════════════════════════
+
+# Add your project-specific checks here
+# Example:
+#
+# check_api_health() {
+#     echo "🌐 Checking API health..."
+#     curl -s http://localhost:3000/health | grep -q "ok" && success "API healthy" || fail "API unhealthy"
+# }
+
+# ═══════════════════════════════════════════════════════════
+# EXECUTION
+# ═══════════════════════════════════════════════════════════
+
+main() {
+    echo ""
+    echo "═══════════════════════════════════════════════════════"
+    echo "🔍 SUPERBEADS VERIFICATION"
+    if [ -n "$TASK_ID" ]; then
+        echo "   Task: $TASK_ID"
+    fi
+    if [ "$QUICK_MODE" = true ]; then
+        echo "   Mode: Quick"
+    fi
+    echo "═══════════════════════════════════════════════════════"
+    echo ""
+
+    local failed=0
+
+    # Core checks
+    check_outputs_exist || failed=$((failed + 1))
+    check_acceptance_criteria
+    check_no_todos
+    check_git_status
+
+    # Pack-specific checks
+    load_pack_verifications
+
+    # Project-specific checks (uncomment as needed)
+    # check_api_health || failed=$((failed + 1))
+
+    echo ""
+    echo "═══════════════════════════════════════════════════════"
+
+    if [ $failed -eq 0 ]; then
+        echo -e "${GREEN}✅ VERIFICATION PASSED${NC}"
+        echo "═══════════════════════════════════════════════════════"
+        exit 0
+    else
+        echo -e "${RED}❌ VERIFICATION FAILED${NC} ($failed checks failed)"
+        echo "═══════════════════════════════════════════════════════"
+        exit 1
+    fi
+}
+
+main "$@"

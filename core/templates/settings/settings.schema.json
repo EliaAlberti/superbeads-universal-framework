@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://superbeads.dev/schemas/settings.json",
+  "title": "SuperBeads Settings",
+  "description": "Schema for Universal SuperBeads Framework project settings",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Project name"
+        },
+        "domain": {
+          "type": "string",
+          "default": "universal",
+          "description": "Primary domain (universal, ios, python, web, etc.)"
+        },
+        "description": {
+          "type": "string",
+          "description": "Brief project description"
+        }
+      },
+      "required": ["name"]
+    },
+    "packs": {
+      "type": "object",
+      "properties": {
+        "installed": {
+          "type": "array",
+          "items": {"type": "string"},
+          "default": [],
+          "description": "List of installed domain packs"
+        },
+        "settings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "Pack-specific settings keyed by pack name"
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "script": {
+          "type": "string",
+          "default": "./verify.sh",
+          "description": "Path to verification script"
+        },
+        "quick_mode": {
+          "type": "boolean",
+          "default": false,
+          "description": "Skip slow checks by default"
+        },
+        "auto_verify": {
+          "type": "boolean",
+          "default": true,
+          "description": "Auto-run verification after task completion"
+        }
+      }
+    },
+    "agents": {
+      "type": "object",
+      "properties": {
+        "default_model": {
+          "type": "string",
+          "enum": ["opus", "sonnet", "haiku"],
+          "default": "sonnet",
+          "description": "Default model for agents"
+        },
+        "cost_optimize": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use cheaper models where appropriate (e.g., haiku for critic)"
+        },
+        "custom_agents_dir": {
+          "type": "string",
+          "default": ".superbeads/agents",
+          "description": "Directory for custom agent definitions"
+        }
+      }
+    },
+    "tasks": {
+      "type": "object",
+      "properties": {
+        "default_estimate": {
+          "type": "string",
+          "default": "12min",
+          "description": "Default time estimate for new tasks"
+        },
+        "min_criteria": {
+          "type": "integer",
+          "default": 3,
+          "description": "Minimum acceptance criteria per task"
+        },
+        "max_criteria": {
+          "type": "integer",
+          "default": 5,
+          "description": "Maximum acceptance criteria per task"
+        }
+      }
+    },
+    "session": {
+      "type": "object",
+      "properties": {
+        "auto_save_progress": {
+          "type": "boolean",
+          "default": true,
+          "description": "Auto-update progress log after each task"
+        },
+        "require_supervisor_approval": {
+          "type": "boolean",
+          "default": true,
+          "description": "Require approval at checkpoints"
+        },
+        "checkpoints": {
+          "type": "object",
+          "properties": {
+            "planning": {"type": "boolean", "default": true},
+            "architecture": {"type": "boolean", "default": true},
+            "milestone": {"type": "boolean", "default": true},
+            "completion": {"type": "boolean", "default": true}
+          }
+        }
+      }
+    },
+    "git": {
+      "type": "object",
+      "properties": {
+        "auto_commit": {
+          "type": "boolean",
+          "default": false,
+          "description": "Auto-commit after task completion"
+        },
+        "commit_format": {
+          "type": "string",
+          "default": "✓ {task_id}: {title}",
+          "description": "Format for commit messages"
+        }
+      }
+    },
+    "beads": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Integrate with Beads task manager"
+        },
+        "sync": {
+          "type": "boolean",
+          "default": true,
+          "description": "Auto-sync tasks with Beads"
+        }
+      }
+    }
+  }
+}
