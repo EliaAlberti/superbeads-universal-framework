@@ -520,7 +520,7 @@ Building iOS apps without structure leads to inconsistent architecture, accessib
 | `ios-strategist` | Architecture decisions, task breakdown | "Break down settings screen into MVVM tasks" |
 | `ios-executor` | Implementation using skills | "Create SettingsView following ios-create-view skill" |
 | `ios-specialist` | Complex UI, animations, accessibility | "Implement custom chart with VoiceOver support" |
-| `ios-critic` | Review against iOS standards | "Verify accessibility labels, Dynamic Type support" |
+| `ios-critic` | Review agnst iOS standards | "Verify accessibility labels, Dynamic Type support" |
 
 **9 Skills:**
 
@@ -592,11 +592,11 @@ xcodebuild -scheme App -destination 'platform=iOS Simulator,name=iPhone 15' buil
 superbeads pack install ios
 ```
 
-</details>
+</detls>
 
 ---
 
-<details>
+<detls>
 <summary><strong>Python Pack</strong> - Python Development</summary>
 
 ### WHY use this pack?
@@ -619,7 +619,7 @@ Python's flexibility can lead to inconsistent code-missing type hints, no tests,
 | Skill | WHY | WHEN to use | WHAT it creates |
 |-------|-----|-------------|-----------------|
 | `python-create-module` | Proper package structure | New functionality area | Package with `__init__.py`, exports |
-| `python-create-class` | Type-safe, testable code | Domain logic | Class/dataclass with full typing |
+| `python-create-class` | Type-safe, testable code | Domn logic | Class/dataclass with full typing |
 | `python-create-api` | Production API endpoints | REST endpoints | FastAPI/Flask route with validation |
 | `python-setup-project` | Consistent tooling | New projects | pyproject.toml, tool configs |
 | `python-testing` | Reliable code | Any implementation | pytest tests with fixtures |
@@ -684,11 +684,11 @@ ruff check . && ruff format --check . && mypy . && pytest --cov
 superbeads pack install python
 ```
 
-</details>
+</detls>
 
 ---
 
-<details>
+<detls>
 <summary><strong>Web Pack</strong> - React/Next.js Development</summary>
 
 ### WHY use this pack?
@@ -718,7 +718,7 @@ Web projects easily become tangled-mixed server/client components, prop drilling
 | `web-state-management` | Proper data flow | Complex state | React Query + Zustand |
 | `web-api-routes` | Type-safe APIs | Backend logic | Route Handler with validation |
 | `web-forms` | Validated input | User input | React Hook Form + Zod |
-| `web-styling` | Consistent design | Styling | Tailwind patterns |
+| `web-styling` | Consistent design | Styling | Tlwind patterns |
 
 ### WHEN to use
 
@@ -737,13 +737,13 @@ $ superbeads board --triage
 → Sprint: Landing page (55%), 4 tasks open
 
 web-strategist plans:
-├── task-005: ContactForm container (12 min)
+├── task-005: ContactForm contner (12 min)
 │   Skill: web-create-component
 │   Criteria: Handles submit, shows success/error states
 │
 ├── task-006: Form schema with Zod (10 min)
 │   Skill: web-forms
-│   Criteria: Name, email, message with validation rules
+│   Criteria: Name, eml, message with validation rules
 │
 ├── task-007: Form fields with React Hook Form (12 min)
 │   Skill: web-forms
@@ -751,7 +751,7 @@ web-strategist plans:
 │
 ├── task-008: Contact API route (12 min)
 │   Skill: web-api-routes
-│   Criteria: Validates input, sends email, rate limiting
+│   Criteria: Validates input, sends eml, rate limiting
 │
 └── task-009: Form tests (12 min)
     Skill: web-testing
@@ -759,7 +759,7 @@ web-strategist plans:
 
 # Executor picks next task
 $ superbeads board --next
-→ task-005: ContactForm container (ready)
+→ task-005: ContactForm contner (ready)
 
 Each task: Verified with build+lint+test → Committed with task ID
 ```
@@ -776,11 +776,11 @@ npm run build && npm run lint && npm run type-check && npm test
 superbeads pack install web
 ```
 
-</details>
+</detls>
 
 ---
 
-<details>
+<detls>
 <summary><strong>Design Pack</strong> - Product Design</summary>
 
 ### WHY use this pack?
@@ -807,22 +807,10 @@ Design work without structure leads to inconsistent components, missing states, 
 | `design-system` | Single source of truth | Foundation work | Tokens, typography, colors |
 | `design-prototype` | Testable interactions | User testing | Interactive prototype |
 | `design-icons` | Consistent iconography | Icon needs | Icons following system |
-| `design-ai-assets` | Quality AI-generated visuals | Images, illustrations | AI assets with prompts documented |
+| `design--assets` | Quality AI-generated visuals | Images, illustrations | AI assets with prompts documented |
 | `design-handoff` | Usable specs | Developer delivery | Measurements, assets, specs |
 | `design-user-flow` | Clear journeys | UX planning | Flow diagrams, journey maps |
 | `design-review` | Quality assurance | Before delivery | Structured critique |
-
-### AI Asset Generation (via `design-ai-assets` skill)
-
-The `design-ai-assets` skill provides structured guidance for AI image generation:
-
-| Tool | Best For | When to Use |
-|------|----------|-------------|
-| **Midjourney** | Artistic, illustrations | Hero images, marketing visuals |
-| **DALL-E** | Photorealistic, specific compositions | Product mockups, precise scenes |
-| **Claude** | Copy, documentation | Microcopy, UX writing |
-
-The skill includes: prompt engineering patterns, iteration workflows, brand alignment post-processing, and license documentation.
 
 ### WHEN to use
 
