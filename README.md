@@ -133,8 +133,9 @@ superbeads init  # Safe to run anytime
 
 ### Session Memory
 - **CLAUDE.md** persists project context across sessions
-- `/resume` loads context at session start
-- `/preserve` saves progress at session end
+- `/resume` loads context + recent session logs, supports topic search
+- `/preserve` saves progress, auto-archives when CLAUDE.md exceeds 280 lines
+- `/compress` saves searchable session logs before `/compact`
 - No more re-explaining your project every time
 
 ### Atomic Git Commits
@@ -434,10 +435,12 @@ superbeads board
 
 | Command | WHEN | WHAT it does |
 |---------|------|--------------|
-| `/resume` | Start of every session | Reads CLAUDE.md, reports state, prepares to work |
-| `/preserve` | End of session | Updates CLAUDE.md with progress, learnings, next steps |
+| `/resume` | Start of every session | Reads CLAUDE.md + recent session logs, supports topic search (`/resume 5 auth`) |
+| `/preserve` | End of session | Updates CLAUDE.md with progress, auto-archives when >280 lines |
 | `/wrapup` | Quick end | Summary + optional CLAUDE.md update |
-| `/compress` | Before `/compact` | Preserves critical context before compaction |
+| `/compress` | Before `/compact` | Saves searchable session log to CC-Session-Logs/ with AI keywords |
+
+**Session logs** are saved to `{project}/CC-Session-Logs/` and enable `/resume` to search past sessions by topic.
 
 ### Session Flow Example
 

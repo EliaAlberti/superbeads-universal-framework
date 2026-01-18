@@ -538,23 +538,27 @@ The commit discipline is aspirational. Skip it if not using git.
 
 ## Session Commands
 
-These work globally, regardless of pack:
+These work globally, regardless of pack. Full skill documentation in `core/templates/skills/`.
 
 ### /resume
 
-**Purpose:** Start a session by loading context from CLAUDE.md
+**Purpose:** Start a session by loading context from CLAUDE.md + recent session logs
 
 **What it does:**
 1. Finds and reads CLAUDE.md
-2. Parses project state, current phase, blockers
-3. Reports status in structured format
-4. Ready to continue work
+2. Loads recent session summaries from CC-Session-Logs/
+3. Supports topic-based search for relevant history
+4. Reports status in structured format
 
 **Usage:**
 ```
-You: /resume
-Claude: [Status report with context loaded]
+/resume              # Load CLAUDE.md + last 3 sessions
+/resume 5            # Load CLAUDE.md + last 5 sessions
+/resume auth         # Load + search for "auth" related sessions
+/resume 10 api       # Load last 10 + search for "api"
 ```
+
+**Skill:** [resume-SKILL.md](./core/templates/skills/resume-SKILL.md)
 
 ### /preserve
 
@@ -564,13 +568,15 @@ Claude: [Status report with context loaded]
 1. Asks what to preserve (decisions, progress, insights)
 2. Reviews current CLAUDE.md structure
 3. Updates with session knowledge
-4. Confirms changes made
+4. Archives old content if CLAUDE.md exceeds 280 lines
 
 **Usage:**
 ```
 You: /preserve
-Claude: [Asks what to save, updates CLAUDE.md]
+Claude: [Multi-select what to save, updates CLAUDE.md]
 ```
+
+**Skill:** [preserve-SKILL.md](./core/templates/skills/preserve-SKILL.md)
 
 ### /wrapup
 
@@ -587,19 +593,35 @@ You: /wrapup
 Claude: [Quick summary, optional CLAUDE.md update]
 ```
 
+**Skill:** [wrapup-SKILL.md](./core/templates/skills/wrapup-SKILL.md)
+
 ### /compress
 
-**Purpose:** Preserve context before using /compact
+**Purpose:** Save full session log before /compact
 
 **What it does:**
-1. Captures current conversation context
-2. Saves to CLAUDE.md for recovery
-3. Prepares for context window clearing
+1. Asks what to preserve from conversation
+2. Generates searchable session log with keywords
+3. Saves to CC-Session-Logs/ for future /resume searches
+4. Prepares for context window clearing
 
 **Usage:**
 ```
 You: /compress
-Claude: [Saves context, ready for /compact]
+Claude: [Saves session log to CC-Session-Logs/]
+You: /compact
+```
+
+**Skill:** [compress-SKILL.md](./core/templates/skills/compress-SKILL.md)
+
+### Session Flow
+
+```
+/resume → Work → /compress → /compact
+              ↓
+         /preserve (for significant learnings)
+              ↓
+         /wrapup (for quick endings)
 ```
 
 ---
