@@ -8,13 +8,14 @@ A comprehensive guide to the Universal SuperBeads Framework - a meta-framework f
 
 1. [What Is SuperBeads?](#what-is-superbeads)
 2. [Core Concepts](#core-concepts)
-3. [Installation](#installation)
-4. [Using the Framework](#using-the-framework)
-5. [Available Packs](#available-packs)
-6. [Fresh vs Mid-Project Installation](#fresh-vs-mid-project-installation)
-7. [Session Commands](#session-commands)
-8. [Best Practices](#best-practices)
-9. [Troubleshooting](#troubleshooting)
+3. [Model Configuration](#model-configuration)
+4. [Installation](#installation)
+5. [Using the Framework](#using-the-framework)
+6. [Available Packs](#available-packs)
+7. [Fresh vs Mid-Project Installation](#fresh-vs-mid-project-installation)
+8. [Session Commands](#session-commands)
+9. [Best Practices](#best-practices)
+10. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -122,6 +123,58 @@ Work isn't done until it's verified. SuperBeads supports multiple verification t
 | **Human confirms** | Manual review | Critical work |
 
 Each pack includes a `verify.sh` template customized for its domain.
+
+---
+
+## Model Configuration
+
+The framework uses sensible model defaults optimized for cost efficiency. Models are fully customizable.
+
+### Default Models
+
+| Agent | Default | Rationale |
+|-------|---------|-----------|
+| **Strategist** | Sonnet | Planning requires solid reasoning; Sonnet excels here |
+| **Executor** | Sonnet | Code implementation is Sonnet's strength |
+| **Specialist** | Sonnet | Domain expertise benefits from Sonnet's broad knowledge |
+| **Critic** | Haiku | Reviews are focused checks; Haiku is fast and 5x cheaper |
+
+### Why These Defaults?
+
+The defaults optimize for **cost efficiency without sacrificing quality**:
+
+- **Sonnet** handles 95%+ of coding tasks excellently. For typical implementation work, output quality matches more expensive models.
+- **Haiku** for reviews means you're not paying premium prices for pass/fail verification checks.
+- A full sprint with these defaults costs a fraction of an all-Opus configuration.
+
+### When to Use Different Models
+
+| Scenario | Recommended Change |
+|----------|-------------------|
+| Complex architectural decisions | Strategist → Opus |
+| Novel/research-heavy implementation | Executor → Opus |
+| Highly nuanced domain work | Specialist → Opus |
+| Budget-constrained project | All agents → Haiku |
+| Quick prototyping | All agents → Haiku |
+| Production-critical code | Executor + Specialist → Opus |
+
+### How to Change Models
+
+Edit the `model:` field in the agent frontmatter:
+
+```yaml
+---
+name: python-strategist
+description: Plans Python/FastAPI work
+model: opus  # Changed from sonnet
+---
+```
+
+Agent files are located at:
+- **Core agents:** `core/templates/agents/`
+- **Pack agents:** `packs/{pack-name}/agents/`
+
+After installing a pack, agents are copied to your project's `.superbeads/agents/` directory where you can customize them freely.
 
 ---
 

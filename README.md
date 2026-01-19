@@ -151,10 +151,10 @@ superbeads init  # Safe to run anytime
 - Domain packs include customized `verify.sh` scripts
 
 ### Cost Optimization
-- Strategist/Executor/Specialist use Sonnet for complex work
-- Critic uses Haiku for reviews (5x cost savings)
-- Reviews don't need full reasoning capability
-- Same quality, significantly lower cost
+- Strategist/Executor/Specialist default to Sonnet (handles 95%+ of tasks excellently)
+- Critic defaults to Haiku for reviews (5x cost savings)
+- **Models are fully customizable** - upgrade to Opus for complex work, or use Haiku for budget projects
+- See [Model Configuration](GUIDE.md#model-configuration) for when and how to change models
 
 ### Sprint Tracking
 - Group tasks into sprints with goals
