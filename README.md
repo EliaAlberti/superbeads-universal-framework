@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Claude%20Code-Optimized-5A67D8?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDgtMy41OSA4LTggOHoiLz48L3N2Zz4=&logoColor=white" alt="Claude Code Optimized" />
-  <img src="https://img.shields.io/badge/Version-1.1.0-green?style=for-the-badge" alt="Version 1.1.0" />
+  <img src="https://img.shields.io/badge/Version-2.0.0-green?style=for-the-badge" alt="Version 1.1.0" />
   <img src="https://img.shields.io/badge/Packs-5%20Available-blue?style=for-the-badge" alt="5 Packs Available" />
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="MIT License" />
 </p>
@@ -20,7 +20,8 @@
   <a href="#how-it-works">How It Works</a> •
   <a href="#domain-packs">Packs</a> •
   <a href="#faq">FAQ</a> •
-  <a href="#credits">Credits</a>
+  <a href="#credits">Credits</a> •
+  <a href="CHANGELOG.md">Changelog</a>
 </p>
 
 ---
@@ -150,11 +151,39 @@ superbeads init  # Safe to run anytime
 - "It looks done" is never good enough
 - Domain packs include customized `verify.sh` scripts
 
-### Cost Optimization
-- Strategist/Executor/Specialist default to Sonnet (handles 95%+ of tasks excellently)
-- Critic defaults to Haiku for reviews (5x cost savings)
-- **Models are fully customizable** - upgrade to Opus for complex work, or use Haiku for budget projects
+### Opus 4.6 by Default
+- All agents default to Opus 4.6 for maximum capability
+- Deep reasoning at every step: planning, implementation, review
+- **Models are fully customizable** -- downgrade to Sonnet for cost savings, or Haiku for budget projects
 - See [Model Configuration](GUIDE.md#model-configuration) for when and how to change models
+
+### Three-Layer Architecture
+- **Layer 1 -- The Brain**: CLAUDE.md auto-loaded by all agents (context, rules, team patterns)
+- **Layer 2 -- Capabilities**: Agent templates, skills, persistence (Beads + Sprint tracking)
+- **Layer 3 -- Teams**: Native Claude Code multi-agent coordination
+- Each layer feeds the others; works with Core alone or Core + Packs
+- See [Three-Layer Architecture](./core/docs/THREE-LAYER-ARCHITECTURE.md) for details
+
+### Production Protocols
+Every agent template includes battle-tested protocols from real-world use:
+- **Communication Protocol** -- "Zero surprises." Always ask when unclear. Never silently skip requirements.
+- **Standby Protocol** -- Agents remain on standby after completing tasks. No re-spinning between tasks.
+- **Verification Iron Law** -- No completion claims without fresh verification evidence. Run the check. Read the output. Then report.
+- **Design-First Workflow** -- User designs, agent implements. Never the reverse. No speculative additions.
+- **Delegation Rules** -- Spawn teammates immediately, then delegate. Don't hoard work on the lead.
+
+### Team Patterns
+Pre-defined team compositions for common workflows:
+
+| Pattern | Composition | Best For |
+|---------|-------------|----------|
+| Feature Team | strategist + executor + specialist + critic | New feature implementation |
+| Bug Squad | 3x executor + critic | Rapid bug fixing |
+| Research Team | strategist + 2x specialist + critic | Technical research |
+| Sprint Team | strategist + 2x executor + critic | Sprint execution |
+| Review Team | 2x critic + specialist | Code/design review |
+
+See [Team Patterns](./core/docs/TEAM-PATTERNS.md) for details.
 
 ### Sprint Tracking
 - Group tasks into sprints with goals
@@ -278,14 +307,25 @@ SuperBeads is built on four patterns:
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-### The Four Pillars
+### Three-Layer Architecture
+
+```
+Layer 1: CLAUDE.md          -- The Brain (auto-loaded context, rules, team patterns)
+Layer 2: Capabilities       -- Agent Templates + Skills + Persistence
+Layer 3: Agent Teams        -- Native Claude Code multi-agent coordination
+```
+
+Each layer is independent but reinforcing. Layer 1 works alone (just CLAUDE.md). Adding Layer 2 brings structure. Layer 3 enables parallel work across specialized agents.
+
+### The Five Pillars
 
 | Pillar | Problem It Solves | How It Works |
 |--------|-------------------|--------------|
 | **Agentic Architecture** | AI tries to do everything at once | Four specialized roles: Strategist plans, Executor builds, Specialist handles complexity, Critic reviews |
 | **Task Discipline** | Large tasks drift and never complete | 10-15 min tasks, no "and" in title, observable output |
-| **Verification Framework** | "Looks done" ≠ done | Every task has verifiable signal: build, test, file, checklist |
+| **Verification Framework** | "Looks done" ≠ done | Every task has verifiable signal: build, test, file, checklist. Iron Law: evidence before claims. |
 | **Session Protocols** | Context lost between sessions | /resume to start, /preserve to end |
+| **Production Protocols** | Miscommunication, speculative work, silent failures | Zero surprises, standby between tasks, design-first, delegation rules |
 
 ### The Four Agents
 
@@ -296,7 +336,7 @@ SuperBeads is built on four patterns:
 | **Specialist** | Some problems need deep domain expertise | Handles complex domain-specific challenges | Complex UI, performance issues, advanced patterns | Applies specialized knowledge (animations, async, accessibility) |
 | **Critic** | Self-review is unreliable; fresh eyes catch issues | Reviews output, verifies quality | Before marking any task complete | Checks against criteria, runs verification, flags issues |
 
-**Cost optimization**: Strategist, Executor, and Specialist use Sonnet. Critic uses Haiku (5x cheaper)-reviews don't need full reasoning capability.
+**Maximum capability**: All agents default to Opus 4.6 for the strongest reasoning at every step. Downgrade to Sonnet or Haiku via frontmatter for cost optimization.
 
 ### Task Discipline
 

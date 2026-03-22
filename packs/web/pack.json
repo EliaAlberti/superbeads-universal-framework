@@ -10,25 +10,25 @@
       "name": "web-strategist",
       "extends": "strategist",
       "file": "agents/web-strategist.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "web-executor",
       "extends": "executor",
       "file": "agents/web-executor.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "web-specialist",
       "extends": "specialist",
       "file": "agents/web-specialist.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "web-critic",
       "extends": "critic",
       "file": "agents/web-critic.md",
-      "model": "haiku"
+      "model": "opus"
     }
   ],
 

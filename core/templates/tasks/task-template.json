@@ -24,7 +24,12 @@
     ],
     "files_to_create": [
       "path/to/new-file.md"
-    ]
+    ],
+    "files_to_modify": [
+      "path/to/existing-file.md"
+    ],
+    "verification_method": "How to verify (e.g., 'MCP: build_sim, test_sim' or './scripts/verify.sh')",
+    "design_tokens": {}
   },
   "depends_on": [],
   "skill": null,

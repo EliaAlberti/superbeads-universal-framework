@@ -15,8 +15,8 @@
     "auto_verify": true
   },
   "agents": {
-    "default_model": "sonnet",
-    "cost_optimize": true,
+    "default_model": "opus",
+    "cost_optimize": false,
     "custom_agents_dir": ".superbeads/agents"
   },
   "tasks": {

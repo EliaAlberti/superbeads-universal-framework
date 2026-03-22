@@ -10,25 +10,25 @@
       "name": "ios-strategist",
       "extends": "strategist",
       "file": "agents/ios-strategist.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "ios-executor",
       "extends": "executor",
       "file": "agents/ios-executor.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "ios-specialist",
       "extends": "specialist",
       "file": "agents/ios-specialist.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "ios-critic",
       "extends": "critic",
       "file": "agents/ios-critic.md",
-      "model": "haiku"
+      "model": "opus"
     }
   ],
 

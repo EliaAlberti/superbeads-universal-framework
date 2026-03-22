@@ -1,6 +1,6 @@
 # Universal SuperBeads Core Engine Architecture
 
-> **Version**: 1.0
+> **Version**: 2.0
 > **Status**: Design Document
 > **Date**: January 2026
 
@@ -132,10 +132,10 @@ Agents are specialized thinking modes, not code. Four universal roles:
 
 | Role | Responsibility | Model | Example |
 |------|----------------|-------|---------|
-| **Strategist** | Plan, break down, architect | Sonnet | Design system structure |
-| **Executor** | Implement, create, build | Sonnet | Write the actual output |
-| **Specialist** | Domain expertise, details | Sonnet | Handle specialized aspects |
-| **Critic** | Review, verify, improve | Haiku | Quality assurance |
+| **Strategist** | Plan, break down, architect | Opus | Design system structure |
+| **Executor** | Implement, create, build | Opus | Write the actual output |
+| **Specialist** | Domain expertise, details | Opus | Handle specialized aspects |
+| **Critic** | Review, verify, improve | Opus | Quality assurance |
 
 **Agent File Format** (Markdown with frontmatter):
 
@@ -148,7 +148,7 @@ tools:
   - Grep
   - Glob
   - Bash
-model: sonnet
+model: opus
 ---
 
 # [domain]-strategist
@@ -445,8 +445,8 @@ SUPERVISOR CHECKPOINTS
     "quick_mode": false
   },
   "agents": {
-    "default_model": "sonnet",
-    "cost_optimize": true
+    "default_model": "opus",
+    "cost_optimize": false
   },
   "session": {
     "auto_save_progress": true,
@@ -502,6 +502,18 @@ SUPERVISOR CHECKPOINTS
 
 ### Blockers
 - [Any blockers]
+
+---
+
+## Skill Override Notes
+
+The installed skills may use older or different patterns than your project. Override at the project level:
+
+| Skill Pattern | Project Override |
+|--------------|-----------------|
+| [Default pattern from skill] | [Your project's preferred pattern] |
+
+When a project uses different conventions than what skills recommend, list the overrides here so all agents apply them consistently.
 
 ---
 

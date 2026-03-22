@@ -15,7 +15,8 @@ A comprehensive guide to the Universal SuperBeads Framework - a meta-framework f
 7. [Fresh vs Mid-Project Installation](#fresh-vs-mid-project-installation)
 8. [Session Commands](#session-commands)
 9. [Best Practices](#best-practices)
-10. [Troubleshooting](#troubleshooting)
+10. [Community Skills](#community-skills)
+11. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -67,6 +68,16 @@ SuperBeads codifies this into reusable components.
 
 **Core works standalone.** Packs are optional accelerators.
 
+### Three-Layer Architecture
+
+SuperBeads operates on three layers (see [THREE-LAYER-ARCHITECTURE.md](./core/docs/THREE-LAYER-ARCHITECTURE.md)):
+
+| Layer | Component | Purpose |
+|-------|-----------|---------|
+| **1. The Brain** | CLAUDE.md | Auto-loaded context, rules, team patterns |
+| **2. Capabilities** | Agent Templates + Skills + Persistence | Reusable tools and workflows |
+| **3. Teams** | Agent Teams (native Claude Code) | Multi-agent coordination |
+
 ---
 
 ## Core Concepts
@@ -77,15 +88,15 @@ Every pack follows the same four-agent pattern:
 
 | Agent | Role | Model | Responsibility |
 |-------|------|-------|----------------|
-| **Strategist** | Plan | Sonnet | Break work into tasks, design architecture |
-| **Executor** | Build | Sonnet | Implement tasks using skills |
-| **Specialist** | Expertise | Sonnet | Handle complex/advanced patterns |
-| **Critic** | Review | Haiku | Verify work, catch issues |
+| **Strategist** | Plan | Opus | Break work into tasks, design architecture |
+| **Executor** | Build | Opus | Implement tasks using skills |
+| **Specialist** | Expertise | Opus | Handle complex/advanced patterns |
+| **Critic** | Review | Opus | Verify work, catch issues |
 
 This separation ensures:
 - Clear responsibilities (no role confusion)
-- Cost optimization (Haiku for reviews = 5x savings)
-- Quality gates at each step
+- Maximum capability at every step (Opus by default)
+- Quality gates with deep reasoning
 
 ### Task Discipline
 
@@ -128,35 +139,35 @@ Each pack includes a `verify.sh` template customized for its domain.
 
 ## Model Configuration
 
-The framework uses sensible model defaults optimized for cost efficiency. Models are fully customizable.
+The framework defaults to Opus 4.6 for maximum capability across all agents. Models are fully customizable.
 
 ### Default Models
 
 | Agent | Default | Rationale |
 |-------|---------|-----------|
-| **Strategist** | Sonnet | Planning requires solid reasoning; Sonnet excels here |
-| **Executor** | Sonnet | Code implementation is Sonnet's strength |
-| **Specialist** | Sonnet | Domain expertise benefits from Sonnet's broad knowledge |
-| **Critic** | Haiku | Reviews are focused checks; Haiku is fast and 5x cheaper |
+| **Strategist** | Opus | Complex planning needs the strongest reasoning |
+| **Executor** | Opus | Quality implementation requires maximum capability |
+| **Specialist** | Opus | Domain expertise needs full capability |
+| **Critic** | Opus | Quality gates deserve deep reasoning to catch subtle issues |
 
-### Why These Defaults?
+### Why Opus by Default?
 
-The defaults optimize for **cost efficiency without sacrificing quality**:
+Opus 4.6 provides the best results across all agent roles:
 
-- **Sonnet** handles 95%+ of coding tasks excellently. For typical implementation work, output quality matches more expensive models.
-- **Haiku** for reviews means you're not paying premium prices for pass/fail verification checks.
-- A full sprint with these defaults costs a fraction of an all-Opus configuration.
+- **Deep reasoning** catches architectural issues a lighter model would miss
+- **Comprehensive context** understanding reduces back-and-forth
+- **Quality gates** (Critic) benefit most from maximum capability -- the last line of defense should be the strongest
+- The cost difference is justified by fewer iterations and higher first-pass quality
 
-### When to Use Different Models
+### When to Downgrade Models
 
 | Scenario | Recommended Change |
 |----------|-------------------|
-| Complex architectural decisions | Strategist → Opus |
-| Novel/research-heavy implementation | Executor → Opus |
-| Highly nuanced domain work | Specialist → Opus |
-| Budget-constrained project | All agents → Haiku |
-| Quick prototyping | All agents → Haiku |
-| Production-critical code | Executor + Specialist → Opus |
+| Budget-constrained project | All agents → Sonnet |
+| Quick prototyping | All agents → Sonnet or Haiku |
+| Simple/repetitive reviews | Critic → Sonnet |
+| High-volume task processing | Executor → Sonnet |
+| Cost-sensitive CI/CD | All agents → Haiku |
 
 ### How to Change Models
 
@@ -166,7 +177,7 @@ Edit the `model:` field in the agent frontmatter:
 ---
 name: python-strategist
 description: Plans Python/FastAPI work
-model: opus  # Changed from sonnet
+model: sonnet  # Downgraded from opus for cost savings
 ---
 ```
 
@@ -821,6 +832,21 @@ Session commands (/resume, /preserve, etc.) are Claude Code features:
 | `web` | React/Next.js | 9 | Components, hooks, state |
 | `design` | Product Design | 9 | Figma, tokens, accessibility |
 | `pm` | Product Management | 9 | Stories, PRDs, experiments |
+
+---
+
+## Community Skills
+
+The framework includes a verification-before-completion skill in core (`core/templates/skills/verification-before-completion-SKILL.md`). Additional community skill patterns can be adopted:
+
+| Skill | Focus |
+|-------|-------|
+| Systematic Debugging | Structured approach to diagnosing issues |
+| Test-Driven Development | Write tests first, implement to pass |
+| Git Worktrees | Parallel development with isolated branches |
+| Code Review | Structured review process with severity levels |
+
+These patterns can be implemented as custom skills following the skill template format.
 
 ---
 

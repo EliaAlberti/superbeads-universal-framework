@@ -43,7 +43,7 @@ Agents aren't code-they're structured ways of approaching work. The same four ro
 | **Responsibilities** | Define approach, create task breakdown, establish dependencies |
 | **Outputs** | Task list, architecture decisions, sprint plan |
 | **Tools** | Read, Search, Query (no implementation tools) |
-| **Model** | Sonnet (complex reasoning) |
+| **Model** | Opus (complex reasoning) |
 
 **Example Activities by Domain**:
 - **Code**: Design system architecture, create module breakdown
@@ -61,7 +61,7 @@ Agents aren't code-they're structured ways of approaching work. The same four ro
 | **Responsibilities** | Do the work, follow task specs, produce outputs |
 | **Outputs** | Actual deliverables (code, documents, designs, etc.) |
 | **Tools** | Full implementation tools for the domain |
-| **Model** | Sonnet (quality implementation) |
+| **Model** | Opus (quality implementation) |
 
 **Example Activities by Domain**:
 - **Code**: Write code, implement features
@@ -79,7 +79,7 @@ Agents aren't code-they're structured ways of approaching work. The same four ro
 | **Responsibilities** | Apply deep domain knowledge, handle complex details |
 | **Outputs** | Specialized deliverables, expert guidance |
 | **Tools** | Domain-specific tools |
-| **Model** | Sonnet (expertise required) |
+| **Model** | Opus (expertise required) |
 
 **Example Activities by Domain**:
 - **Code**: UI/UX implementation, performance optimization, accessibility
@@ -97,7 +97,7 @@ Agents aren't code-they're structured ways of approaching work. The same four ro
 | **Responsibilities** | Review against criteria, verify completion, flag issues |
 | **Outputs** | Review report, approval/rejection, improvement suggestions |
 | **Tools** | Read, Verify, Check (no modification tools) |
-| **Model** | Haiku (focused scope, fast feedback) |
+| **Model** | Opus (deep reasoning, thorough review) |
 
 **Example Activities by Domain**:
 - **Code**: Code review, test verification, pattern compliance
@@ -119,7 +119,7 @@ description: One-line description of this agent
 tools:
   - Tool1
   - Tool2
-model: sonnet | haiku
+model: opus
 ---
 
 # [domain]-[role]
@@ -199,14 +199,14 @@ Recommendations:
 
 ## Model Selection
 
-| Role | Recommended Model | Rationale |
-|------|-------------------|-----------|
-| **Strategist** | Sonnet | Complex planning needs strong reasoning |
-| **Executor** | Sonnet | Quality implementation requires capability |
-| **Specialist** | Sonnet | Domain expertise needs full capability |
-| **Critic** | Haiku | Focused scope, fast feedback, cost-efficient |
+| Role | Default Model | Rationale |
+|------|---------------|-----------|
+| **Strategist** | Opus | Complex planning needs the strongest reasoning |
+| **Executor** | Opus | Quality implementation requires maximum capability |
+| **Specialist** | Opus | Domain expertise needs full capability |
+| **Critic** | Opus | Quality gates deserve deep reasoning to catch subtle issues |
 
-**Cost Optimization**: Using Haiku for Critic saves ~5x cost while maintaining quality for review tasks.
+**Customization**: Users can downgrade to Sonnet for cost optimization or Haiku for budget projects by editing agent frontmatter.
 
 ---
 
@@ -286,7 +286,7 @@ tools:
   - Read
   - Grep
   - Glob
-model: sonnet
+model: opus
 ---
 
 # universal-strategist
@@ -305,7 +305,7 @@ tools:
   - Write
   - Edit
   - Bash
-model: sonnet
+model: opus
 ---
 
 # ios-implementer
@@ -341,15 +341,15 @@ You plan AND implement the work...
 
 ```markdown
 ---
-model: opus
+model: haiku
 ---
 
-# simple-critic
+# complex-strategist
 
-You review outputs...
+You plan sophisticated architectures...
 ```
 
-**Problem**: Wasted resources, unnecessary cost
+**Problem**: Insufficient capability for complex planning tasks
 
 ---
 
@@ -357,7 +357,7 @@ You review outputs...
 
 1. **Four roles**: Strategist, Executor, Specialist, Critic
 2. **Clear boundaries**: Each agent has defined responsibilities
-3. **Right model**: Match model to complexity
+3. **Right model**: Opus by default, customize as needed
 4. **Orchestrated**: Main session coordinates agents
 5. **Universal pattern**: Works for any domain
 

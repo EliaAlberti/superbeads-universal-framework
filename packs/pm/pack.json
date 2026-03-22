@@ -10,25 +10,25 @@
       "name": "pm-strategist",
       "extends": "strategist",
       "file": "agents/pm-strategist.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "pm-executor",
       "extends": "executor",
       "file": "agents/pm-executor.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "pm-specialist",
       "extends": "specialist",
       "file": "agents/pm-specialist.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "pm-critic",
       "extends": "critic",
       "file": "agents/pm-critic.md",
-      "model": "haiku"
+      "model": "opus"
     }
   ],
 

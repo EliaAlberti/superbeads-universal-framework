@@ -14,10 +14,10 @@ iOS/SwiftUI development pack providing specialized agents and skills for iOS app
 
 | Agent | Role | Model | Purpose |
 |-------|------|-------|---------|
-| `ios-strategist` | Strategist | Sonnet | Architecture, task planning, MVVM design |
-| `ios-executor` | Executor | Sonnet | Swift/SwiftUI implementation |
-| `ios-specialist` | Specialist | Sonnet | Complex UI, animations, pixel-perfect |
-| `ios-critic` | Critic | Haiku | Code review, test verification |
+| `ios-strategist` | Strategist | Opus | Architecture, task planning, MVVM design |
+| `ios-executor` | Executor | Opus | Swift/SwiftUI implementation |
+| `ios-specialist` | Specialist | Opus | Complex UI, animations, pixel-perfect |
+| `ios-critic` | Critic | Opus | Code review, test verification |
 
 ## Skills
 

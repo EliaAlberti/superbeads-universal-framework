@@ -10,25 +10,25 @@
       "name": "design-strategist",
       "extends": "strategist",
       "file": "agents/design-strategist.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "design-executor",
       "extends": "executor",
       "file": "agents/design-executor.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "design-specialist",
       "extends": "specialist",
       "file": "agents/design-specialist.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "design-critic",
       "extends": "critic",
       "file": "agents/design-critic.md",
-      "model": "haiku"
+      "model": "opus"
     }
   ],
 

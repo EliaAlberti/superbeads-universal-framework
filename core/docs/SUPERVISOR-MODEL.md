@@ -436,6 +436,21 @@ Configure supervisor interaction in settings:
 
 ---
 
+## Design-First Workflow
+
+The workflow is always: **User designs -- Agent implements the designs.** Never the reverse.
+
+Agents do NOT:
+- Proactively create deliverables the user has not requested
+- Add components, views, or features "in preparation" for future work
+- Suggest or build speculative implementations
+
+**Build exactly what is requested.** With no forward-looking additions.
+
+**Exception:** The user may explicitly ask an agent to propose or create deliverables. When this happens, propose options for approval before implementing.
+
+---
+
 ## Summary
 
 1. **Clear roles** - Supervisor directs, AI executes
@@ -443,6 +458,7 @@ Configure supervisor interaction in settings:
 3. **Escalation rules** - When to ask vs. when to proceed
 4. **Communication patterns** - Status, question, proposal
 5. **Trust boundaries** - AI decides implementation, supervisor decides direction
+6. **Design-first** - User designs, agent implements
 
 ---
 

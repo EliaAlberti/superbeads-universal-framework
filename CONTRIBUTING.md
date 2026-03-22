@@ -126,25 +126,25 @@ The manifest defines your pack's contents and requirements.
       "name": "{domain}-strategist",
       "extends": "strategist",
       "file": "agents/{domain}-strategist.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "{domain}-executor",
       "extends": "executor",
       "file": "agents/{domain}-executor.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "{domain}-specialist",
       "extends": "specialist",
       "file": "agents/{domain}-specialist.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "{domain}-critic",
       "extends": "critic",
       "file": "agents/{domain}-critic.md",
-      "model": "haiku"
+      "model": "opus"
     }
   ],
 
@@ -191,7 +191,7 @@ tools:
   - Bash
   - Edit    # Only for executor
   - Write   # Only for executor
-model: sonnet  # or haiku for critic
+model: opus
 ---
 
 # {domain}-{role}
@@ -241,10 +241,10 @@ This agent extends the core {role} pattern. See `core/docs/UNIVERSAL-AGENTS.md`.
 
 | Agent | Model | Rationale |
 |-------|-------|-----------|
-| Strategist | Sonnet | Complex planning requires strong reasoning |
-| Executor | Sonnet | Implementation needs code understanding |
-| Specialist | Sonnet | Domain expertise requires deep knowledge |
-| Critic | Haiku | Review is structured, lower complexity |
+| Strategist | Opus | Complex planning needs the strongest reasoning |
+| Executor | Opus | Quality implementation requires maximum capability |
+| Specialist | Opus | Domain expertise needs full capability |
+| Critic | Opus | Quality gates deserve deep reasoning |
 
 ### Step 3: Create Skills
 
@@ -372,10 +372,10 @@ main "$@"
 
 | Agent | Model | Purpose |
 |-------|-------|---------|
-| {domain}-strategist | Sonnet | [Purpose] |
-| {domain}-executor | Sonnet | [Purpose] |
-| {domain}-specialist | Sonnet | [Purpose] |
-| {domain}-critic | Haiku | [Purpose] |
+| {domain}-strategist | Opus | [Purpose] |
+| {domain}-executor | Opus | [Purpose] |
+| {domain}-specialist | Opus | [Purpose] |
+| {domain}-critic | Opus | [Purpose] |
 
 ### Skills
 

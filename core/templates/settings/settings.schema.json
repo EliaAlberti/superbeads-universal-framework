@@ -68,7 +68,7 @@
         "default_model": {
           "type": "string",
           "enum": ["opus", "sonnet", "haiku"],
-          "default": "sonnet",
+          "default": "opus",
           "description": "Default model for agents"
         },
         "cost_optimize": {

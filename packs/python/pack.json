@@ -10,25 +10,25 @@
       "name": "python-strategist",
       "extends": "strategist",
       "file": "agents/python-strategist.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "python-executor",
       "extends": "executor",
       "file": "agents/python-executor.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "python-specialist",
       "extends": "specialist",
       "file": "agents/python-specialist.md",
-      "model": "sonnet"
+      "model": "opus"
     },
     {
       "name": "python-critic",
       "extends": "critic",
       "file": "agents/python-critic.md",
-      "model": "haiku"
+      "model": "opus"
     }
   ],
 

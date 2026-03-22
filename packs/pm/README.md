@@ -14,10 +14,10 @@ Product management pack providing specialized agents and skills for PM workflows
 
 | Agent | Role | Model | Purpose |
 |-------|------|-------|---------|
-| `pm-strategist` | Strategist | Sonnet | Product strategy, roadmap planning |
-| `pm-executor` | Executor | Sonnet | Write PRDs, user stories, documentation |
-| `pm-specialist` | Specialist | Sonnet | Metrics analysis, stakeholder communication |
-| `pm-critic` | Critic | Haiku | Review stories, verify INVEST criteria |
+| `pm-strategist` | Strategist | Opus | Product strategy, roadmap planning |
+| `pm-executor` | Executor | Opus | Write PRDs, user stories, documentation |
+| `pm-specialist` | Specialist | Opus | Metrics analysis, stakeholder communication |
+| `pm-critic` | Critic | Opus | Review stories, verify INVEST criteria |
 
 ## Skills
 

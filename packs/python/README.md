@@ -14,10 +14,10 @@ Python development pack providing specialized agents and skills for Python appli
 
 | Agent | Role | Model | Purpose |
 |-------|------|-------|---------|
-| `python-strategist` | Strategist | Sonnet | Architecture, task planning, module design |
-| `python-executor` | Executor | Sonnet | Python implementation, testing |
-| `python-specialist` | Specialist | Sonnet | Advanced async, performance, metaprogramming |
-| `python-critic` | Critic | Haiku | Code review, verification |
+| `python-strategist` | Strategist | Opus | Architecture, task planning, module design |
+| `python-executor` | Executor | Opus | Python implementation, testing |
+| `python-specialist` | Specialist | Opus | Advanced async, performance, metaprogramming |
+| `python-critic` | Critic | Opus | Code review, verification |
 
 ## Skills
 

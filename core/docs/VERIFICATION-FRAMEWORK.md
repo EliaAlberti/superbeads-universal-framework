@@ -6,6 +6,30 @@ Verification isn't "looks good"-it's observable proof that work is complete. Eve
 
 ---
 
+## The Iron Law
+
+**NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE.**
+
+Before claiming any task is complete:
+1. **Identify** the verification command
+2. **Run** it
+3. **Read** the output
+4. Only **then** report completion with evidence
+
+Anti-patterns:
+- "I believe this works" (run the build)
+- "This should pass" (run the tests)
+- "The file looks correct" (check it exists and has expected content)
+
+Good patterns:
+- "Build passed (exit code 0, 0 warnings)"
+- "Tests passed: 12/12"
+- "API returned 200 with expected payload"
+
+Evidence before claims, always.
+
+---
+
 ## The Observable Completion Principle
 
 ### Bad: Subjective

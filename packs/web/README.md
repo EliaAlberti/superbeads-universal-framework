@@ -14,10 +14,10 @@ Web development pack providing specialized agents and skills for React/Next.js a
 
 | Agent | Role | Model | Purpose |
 |-------|------|-------|---------|
-| `web-strategist` | Strategist | Sonnet | Architecture, task planning, component design |
-| `web-executor` | Executor | Sonnet | React/TypeScript implementation |
-| `web-specialist` | Specialist | Sonnet | Advanced React, performance, animations |
-| `web-critic` | Critic | Haiku | Code review, verification |
+| `web-strategist` | Strategist | Opus | Architecture, task planning, component design |
+| `web-executor` | Executor | Opus | React/TypeScript implementation |
+| `web-specialist` | Specialist | Opus | Advanced React, performance, animations |
+| `web-critic` | Critic | Opus | Code review, verification |
 
 ## Skills
 

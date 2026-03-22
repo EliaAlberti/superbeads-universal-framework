@@ -14,10 +14,10 @@ Product design pack providing specialized agents and skills for design workflows
 
 | Agent | Role | Model | Purpose |
 |-------|------|-------|---------|
-| `design-strategist` | Strategist | Sonnet | Design system architecture, component planning |
-| `design-executor` | Executor | Sonnet | Create design artifacts, apply patterns |
-| `design-specialist` | Specialist | Sonnet | Accessibility, motion, responsive patterns |
-| `design-critic` | Critic | Haiku | Review designs, verify consistency |
+| `design-strategist` | Strategist | Opus | Design system architecture, component planning |
+| `design-executor` | Executor | Opus | Create design artifacts, apply patterns |
+| `design-specialist` | Specialist | Opus | Accessibility, motion, responsive patterns |
+| `design-critic` | Critic | Opus | Review designs, verify consistency |
 
 ## Skills
 

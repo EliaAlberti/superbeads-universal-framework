@@ -385,7 +385,7 @@ tools:
   - WebFetch
   - Read
   - Write
-model: sonnet
+model: opus
 ---
 
 # research-executor
