@@ -635,11 +635,11 @@ xcodebuild -scheme App -destination 'platform=iOS Simulator,name=iPhone 15' buil
 superbeads pack install ios
 ```
 
-</detls>
+</details>
 
 ---
 
-<detls>
+<details>
 <summary><strong>Python Pack</strong> - Python Development</summary>
 
 ### WHY use this pack?
@@ -727,11 +727,11 @@ ruff check . && ruff format --check . && mypy . && pytest --cov
 superbeads pack install python
 ```
 
-</detls>
+</details>
 
 ---
 
-<detls>
+<details>
 <summary><strong>Web Pack</strong> - React/Next.js Development</summary>
 
 ### WHY use this pack?
@@ -819,11 +819,11 @@ npm run build && npm run lint && npm run type-check && npm test
 superbeads pack install web
 ```
 
-</detls>
+</details>
 
 ---
 
-<detls>
+<details>
 <summary><strong>Design Pack</strong> - Product Design</summary>
 
 ### WHY use this pack?
