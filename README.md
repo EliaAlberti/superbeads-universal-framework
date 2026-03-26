@@ -121,7 +121,7 @@ your-project/
 
 ### Mid-Project Adoption
 
-SuperBeads is designed for mid-project adoption. The initialization is non-destructive-it only adds files and never modifies your existing code.
+SuperBeads is designed for mid-project adoption. The initialization is non-destructive -- it only adds files and never modifies your existing code.
 
 ```bash
 cd existing-project
@@ -563,7 +563,7 @@ Building iOS apps without structure leads to inconsistent architecture, accessib
 | `ios-strategist` | Architecture decisions, task breakdown | "Break down settings screen into MVVM tasks" |
 | `ios-executor` | Implementation using skills | "Create SettingsView following ios-create-view skill" |
 | `ios-specialist` | Complex UI, animations, accessibility | "Implement custom chart with VoiceOver support" |
-| `ios-critic` | Review agnst iOS standards | "Verify accessibility labels, Dynamic Type support" |
+| `ios-critic` | Review against iOS standards | "Verify accessibility labels, Dynamic Type support" |
 
 **9 Skills:**
 
@@ -662,7 +662,7 @@ Python's flexibility can lead to inconsistent code-missing type hints, no tests,
 | Skill | WHY | WHEN to use | WHAT it creates |
 |-------|-----|-------------|-----------------|
 | `python-create-module` | Proper package structure | New functionality area | Package with `__init__.py`, exports |
-| `python-create-class` | Type-safe, testable code | Domn logic | Class/dataclass with full typing |
+| `python-create-class` | Type-safe, testable code | Domain logic | Class/dataclass with full typing |
 | `python-create-api` | Production API endpoints | REST endpoints | FastAPI/Flask route with validation |
 | `python-setup-project` | Consistent tooling | New projects | pyproject.toml, tool configs |
 | `python-testing` | Reliable code | Any implementation | pytest tests with fixtures |
@@ -761,7 +761,7 @@ Web projects easily become tangled-mixed server/client components, prop drilling
 | `web-state-management` | Proper data flow | Complex state | React Query + Zustand |
 | `web-api-routes` | Type-safe APIs | Backend logic | Route Handler with validation |
 | `web-forms` | Validated input | User input | React Hook Form + Zod |
-| `web-styling` | Consistent design | Styling | Tlwind patterns |
+| `web-styling` | Consistent design | Styling | Tailwind patterns |
 
 ### WHEN to use
 
@@ -780,13 +780,13 @@ $ superbeads board --triage
 → Sprint: Landing page (55%), 4 tasks open
 
 web-strategist plans:
-├── task-005: ContactForm contner (12 min)
+├── task-005: ContactForm container (12 min)
 │   Skill: web-create-component
 │   Criteria: Handles submit, shows success/error states
 │
 ├── task-006: Form schema with Zod (10 min)
 │   Skill: web-forms
-│   Criteria: Name, eml, message with validation rules
+│   Criteria: Name, email, message with validation rules
 │
 ├── task-007: Form fields with React Hook Form (12 min)
 │   Skill: web-forms
@@ -794,7 +794,7 @@ web-strategist plans:
 │
 ├── task-008: Contact API route (12 min)
 │   Skill: web-api-routes
-│   Criteria: Validates input, sends eml, rate limiting
+│   Criteria: Validates input, sends email, rate limiting
 │
 └── task-009: Form tests (12 min)
     Skill: web-testing
@@ -802,7 +802,7 @@ web-strategist plans:
 
 # Executor picks next task
 $ superbeads board --next
-→ task-005: ContactForm contner (ready)
+→ task-005: ContactForm container (ready)
 
 Each task: Verified with build+lint+test → Committed with task ID
 ```
